@@ -1,0 +1,38 @@
+@import "../../layout/theme";
+
+.container {
+  padding: 8vw 0;
+  @media screen and (max-width: $screen-break) {
+    padding: 3vw 0;
+  }
+}
+
+.companyHeading {
+  @extend .heading3;
+  // background-color: red;
+  color: $colorTextLight;
+  text-align: center;
+  font-weight: 200;
+  letter-spacing: 3px;
+}
+.selectBox {
+  min-width: 200px;
+  color: $colorTextLight !important;
+}
+
+.selectBox svg {
+  color: $colorTextLight !important;
+}
+
+.selectLabel {
+  color: $colorTextLight !important;
+}
+
+.logo {
+  width: 12vw;
+  margin: 0 auto;
+  @media screen and (max-width: $screen-break) {
+    width: 20vw;
+  }
+  fill: $colorTextLight;
+}

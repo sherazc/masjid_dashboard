@@ -1,0 +1,23 @@
+@import "../../layout/theme";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 8vw 0;
+  @media screen and (max-width: $screen-break) {
+    padding: 3vw 0;
+  }
+}
+
+
+.formControl {
+  margin-top: 20px !important;
+  min-width: 250px;
+}
+
+.inputControl {
+  display: block;
+  // margin: 5px;
+  min-width: 250px !important;
+  width: 250px;
+}

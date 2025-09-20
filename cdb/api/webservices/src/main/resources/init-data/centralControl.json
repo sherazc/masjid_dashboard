@@ -1,0 +1,88 @@
+[{
+	"_id": {
+		"$oid": "5da27306f54ab6c94a693ee0"
+	},
+	"companyId": {
+		"$oid": "5da2632ef2a2337a5fd916d3"
+	},
+	"announcements": [
+		{
+			"detail": "Announcement Detail 1"
+		}
+	],
+	"customConfigurations": [
+		{
+			"name": "jumah_prayer",
+			"value": "Jum'ah salah starts 2:00pm"
+		},
+		{
+			"name": "clock_type",
+			"value": "1"
+		},
+		{
+			"name": "hijri_adjust_days",
+			"value": 1
+		}
+	],
+	"events": [
+		{
+			"date": {
+				"$date": "2019-01-19T16:32:06.580Z"
+			},
+			"title": "Title 1",
+			"time": "Time 1",
+			"description": "description 1"
+		},
+		{
+			"date": {
+				"$date": "2019-01-19T16:32:06.580Z"
+			},
+			"title": "Title 2",
+			"time": "Time 2",
+			"description": "description 2"
+		}
+	],
+	"expenses": [
+		{
+			"lineItem": "Line item 1",
+			"amount": 100.0,
+			"enabled": true
+		},
+		{
+			"lineItem": "Line item 2",
+			"amount": 200.0,
+			"enabled": true
+		}
+	],
+	"funds": [
+		{
+			"name": "Fund Name 1",
+			"goal": 1000.0,
+			"current": 550.0,
+			"endDate": {
+				"$date": "2019-01-19T16:32:06.580Z"
+			},
+			"enabled": true
+		},
+		{
+			"name": "Fund Name 2",
+			"goal": 2000.0,
+			"current": 1550.0,
+			"pledge": 20.0,
+			"endDate": {
+				"$date": "2019-01-19T16:32:06.580Z"
+			},
+			"enabled": true
+		}
+	],
+	"jummahs": [
+		{
+			"date": {
+				"$date": "2019-01-19T16:32:06.580Z"
+			},
+			"khateeb": "Kateeb 1 Changed again",
+			"enabled": true
+		}
+	]
+}]
+

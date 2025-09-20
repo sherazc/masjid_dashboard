@@ -1,0 +1,45 @@
+@import "../CompanyDashboardTheme";
+
+$contentFullHeight: 150vh;
+
+@keyframes slideUpAnimate {
+  from {height: $contentFullHeight;}
+  to {height: 0;}
+}
+
+@keyframes slideDownAnimate {
+  from {height: 0;}
+  to {height: $contentFullHeight;}
+}
+
+.commonSliderContent {
+  overflow: hidden;
+  padding: 0;
+}
+
+.commonSliderContentAnimate {
+  @extend .commonSliderContent;
+  animation-timing-function: ease-in;
+}
+
+.slideUp {
+  @extend .commonSliderContentAnimate;
+  height: 0;
+  animation-name: slideUpAnimate;
+}
+
+.slideDown {
+  @extend .commonSliderContentAnimate;
+  height: $contentFullHeight;
+  animation-name: slideDownAnimate;
+}
+
+.sliderHeightZero {
+  @extend .commonSliderContent;
+  height: 0;
+}
+
+.sliderHeightFull {
+  @extend .commonSliderContent;
+  height: $contentFullHeight;
+}

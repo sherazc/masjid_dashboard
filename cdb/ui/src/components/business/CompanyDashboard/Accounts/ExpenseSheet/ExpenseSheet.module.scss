@@ -1,0 +1,78 @@
+@import "../../CompanyDashboardTheme";
+
+.container {
+  margin: 0vw 2.5vw 1.5vw 2.5vw;
+
+  border-radius: 2px;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.40);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.40);
+  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.40);
+  @media screen and (max-width: $screen-break) {
+    margin: 0vw 12vw 3vw 12vw;
+  }
+}
+
+.header {
+  padding: .5vw;
+  background-color: $color2;
+  @media screen and (max-width: $screen-break) {
+    padding: 1vw;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @media screen and (max-width: $screen-break) {
+  }
+}
+
+
+.footer {
+  @extend .textRegular;
+
+  padding: .5vw;
+  @media screen and (max-width: $screen-break) {
+    padding: 1vw;
+  }
+}
+
+
+
+table.grid {
+  border-collapse: collapse;
+  margin: 0 auto;
+  text-align: center;
+  width: 99%;
+  /*
+  min-width: 70%;
+  max-width: 85%;
+  @media screen and (max-width: $screen-break) {
+    min-width: 60%;
+    max-width: 80%;
+  }
+  */
+}
+
+table.grid th, table.grid td {
+  border: 1px solid $color1;
+  padding: .4vw;
+  @media screen and (max-width: $screen-break) {
+    padding: 2vw;
+  }
+}
+
+table.grid td {
+  @extend .textLarge;
+}
+
+table.grid th {
+  @extend .textLarge, .textBold;
+  //background-color: $color2;
+}
+
+table.grid tfoot td {
+  @extend .textLarge, .textBold;
+}

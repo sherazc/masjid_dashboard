@@ -1,0 +1,72 @@
+@import "../../CompanyDashboardTheme";
+
+.rod_table {
+    font-family: Arial;
+    text-align: center;
+    background-color: #fff8eb;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px #888888;
+    border: 0;
+    border-spacing: 0px;
+    border-collapse: separate;
+    font-size: .65vw;
+    color: #444;
+    margin: 0 auto;
+    @media screen and (max-width: $screen-break) {
+        font-size: 2vw;
+    }
+}
+
+.rod_table th, td {
+    border: 0 solid black;
+}
+
+.surahTitle {
+    font-family: 'saleem';
+    font-size: .5vw;
+    @media screen and (max-width: $screen-break) {
+        font-size: 1.5vw;
+    }
+}
+
+.bismillah {
+    font-family: 'saleem';
+    color: #062707;
+    font-size: 1vw;
+    @media screen and (max-width: $screen-break) {
+        font-size: 3vw;
+    }
+}
+
+.surahTitleDescription {
+    font-size: .3vw;
+    @media screen and (max-width: $screen-break) {
+        font-size: 1vw;
+    }
+}
+
+.ayaArabic {
+    font-family: 'saleem';
+    color: #062707;
+    font-size: 1.5vw;
+    background-color: #cbdfcc;
+    @media screen and (max-width: $screen-break) {
+        font-size: 4vw;
+    }
+}
+
+.ayaTranslation {
+
+}
+
+.ayaNumber {
+    background-color: #cbdfcc;
+}
+
+.ayaTranslationName {
+    font-size: .3vw;
+    color: #666;
+    @media screen and (max-width: $screen-break) {
+        font-size: 1vw;
+    }
+}

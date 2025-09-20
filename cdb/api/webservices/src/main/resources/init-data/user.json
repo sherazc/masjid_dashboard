@@ -1,0 +1,100 @@
+[
+  {
+    "_id": {
+      "$oid": "5da27307f54ab6c94a693ee3"
+    },
+    "companyId": {
+      "$oid": "5da2632ef2a2337a5fd916d3"
+    },
+    "email": "user@email.com",
+    "password": "$2a$04$bl.8O/fUKciwtqKeMg8g.Ox/OGlEqleAgQq9Zuo5/HPPHhM8aLocG",
+    "firstName": "Sheraz",
+    "lastName": "User",
+    "roles": [
+      "USER"
+    ],
+    "active": true,
+    "verified": true,
+    "_class": "com.sc.cdb.data.model.auth.User"
+  },
+  {
+    "_id": {
+      "$oid": "5c435378727b65472a2f1f57"
+    },
+    "companyId": {
+      "$oid": "5da2632ef2a2337a5fd916d3"
+    },
+    "email": "admin.user@email.com",
+    "password": "$2a$04$bl.8O/fUKciwtqKeMg8g.Ox/OGlEqleAgQq9Zuo5/HPPHhM8aLocG",
+    "firstName": "Sheraz",
+    "lastName": "Admin",
+    "roles": [
+      "ADMIN",
+      "USER"
+    ],
+    "active": true,
+    "verified": true,
+    "_class": "com.sc.cdb.data.model.auth.User"
+  },
+  {
+    "_id": {
+      "$oid": "5c435378727b65472a2f1f58"
+    },
+    "companyId": {
+      "$oid": "5da2632ef2a2337a5fd916d3"
+    },
+    "email": "super.admin.user@email.com",
+    "password": "$2a$04$bl.8O/fUKciwtqKeMg8g.Ox/OGlEqleAgQq9Zuo5/HPPHhM8aLocG",
+    "firstName": "Sheraz",
+    "lastName": "Super Admin",
+    "roles": [
+      "SUPER_ADMIN",
+      "USER"
+    ],
+    "active": true,
+    "verified": true,
+    "_class": "com.sc.cdb.data.model.auth.User"
+  },
+  {
+    "_id": {
+      "$oid": "5c435378727b65472a2f1f59"
+    },
+    "companyId": {
+      "$oid": "5da272f6f54ab6c94a693edf"
+    },
+    "email": "super.admin.user@company2.com",
+    "password": "$2a$04$bl.8O/fUKciwtqKeMg8g.Ox/OGlEqleAgQq9Zuo5/HPPHhM8aLocG",
+    "firstName": "Sheraz",
+    "lastName": "At Company 2",
+    "roles": [
+      "SUPER_ADMIN",
+      "ADMIN",
+      "USER"
+    ],
+    "active": true,
+    "verified": true,
+    "_class": "com.sc.cdb.data.model.auth.User"
+  },
+  {
+    "_id": {
+      "$oid": "5da336eff2a2338668d23a04"
+    },
+    "companyId": {
+      "$oid": "5e035ae04bdc55545be2bd08"
+    },
+    "email": "sherazcdev@gmail.com",
+    "password": "$2a$04$bl.8O/fUKciwtqKeMg8g.Ox/OGlEqleAgQq9Zuo5/HPPHhM8aLocG",
+    "firstName": "Sheraz",
+    "lastName": "Chaudhry",
+    "roles": [
+      "ADMIN"
+    ],
+    "registrationDate":{
+      "$date": "2030-12-25T00:00:00.000Z"
+    },
+    "emailVerifyCode": "abc",
+    "active": false,
+    "verified": false,
+    "_class": "com.sc.cdb.data.model.auth.User"
+  }
+]

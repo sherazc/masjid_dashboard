@@ -1,0 +1,72 @@
+[
+  {
+    "_id": {
+      "$oid": "5da27307f54ab6c94a693ee1"
+    },
+    "configurations": [
+      {
+        "name": "jumah_prayer",
+        "type": "text",
+        "label": "Jumah Prayer",
+        "defaultValue": "",
+        "description": "Text displayed under salah timetable. This text is used for displaying Jumah salah time."
+      },
+      {
+        "name": "hijri_adjust_days",
+        "type": "number",
+        "label": "Hijri Adjust Days",
+        "defaultValue": "0",
+        "description": "This config is used to adjust Hijri Calendar date. Valid value is number. Could be positive or negative values"
+      },
+      {
+        "name": "clock_type",
+        "type": "number",
+        "label": "Clock Type",
+        "defaultValue": "1",
+        "description": "0 = no clock\n1 = analog\n2 = digital"
+      },
+      {
+        "name": "fajr_iqama",
+        "type": "time",
+        "label": "Fajr Iqama",
+        "defaultValue": "",
+        "description": "Overrides Fajr iqama time.\nIqama and next change time in calendar will be ignored.\nEnter time in 24 hours format 00:00 or a short message."
+      },
+      {
+        "name": "zuhar_iqama",
+        "type": "time",
+        "label": "Zuhr Iqama",
+        "defaultValue": "",
+        "description": "Overrides Zuhr iqama time.\nIqama and next change time in calendar will be ignored.\nEnter time in 24 hours format 00:00 or a short message."
+      },
+      {
+        "name": "asr_iqama",
+        "type": "time",
+        "label": "Asr Iqama",
+        "defaultValue": "",
+        "description": "Overrides Asr iqama time.\nIqama and next change time in calendar will be ignored.\nEnter time in 24 hours format 00:00 or a short message."
+      },
+      {
+        "name": "maghrib_iqama",
+        "type": "text",
+        "label": "Maghrib Iqama",
+        "defaultValue": "5 Mins",
+        "description": "Overrides Magrib time.\nIqama and next change time in calendar will be ignored.\nEnter time in 24 hours format 00:00 or a short message."
+      },
+      {
+        "name": "isha_iqama",
+        "type": "time",
+        "label": "Isha Iqama",
+        "defaultValue": "",
+        "description": "Overrides Isha iqama time.\nIqama and next change time in calendar will be ignored.\nEnter time in 24 hours format 00:00 or a short message."
+      },
+      {
+        "name": "dashboard_type",
+        "type": "number",
+        "label": "Dashboard Type",
+        "defaultValue": "1",
+        "description": "Dashboard Type."
+      }
+    ]
+  }
+]

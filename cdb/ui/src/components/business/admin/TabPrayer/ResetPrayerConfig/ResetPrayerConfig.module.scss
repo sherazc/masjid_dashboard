@@ -1,0 +1,20 @@
+@import "../../adminTheme";
+
+.formControl {
+  margin: 5px;
+  min-width: 220px;
+}
+
+.selectEmpty {
+  margin-top: 5px;
+  min-width: 220px;
+}
+
+.azanOffsetContainer {
+  display: flex;
+}
+
+.azanOffset {
+  width: 20%;
+  padding: 5px;
+}

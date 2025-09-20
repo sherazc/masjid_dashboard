@@ -1,0 +1,67 @@
+.jsContainer {
+    width: 350px;
+    display: inline-block;
+    /*background-color: orange;*/
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,0.30);
+    box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.30);
+    -moz-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.30);
+    -webkit-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.30);
+}
+
+.jsHeader {
+    font-size: larger;
+    letter-spacing: 5px;
+    background-color: #4f7d9b;
+    color: rgba(255, 255, 255, 0.75);
+    border-radius: 3px 3px 0 0;
+    padding: 10px;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.30);
+}
+
+.jsTableContainer {
+}
+
+.jsTable {
+    text-align: center;
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.jsTable thead tr {
+    background-color: rgba(0, 0, 0, 0.10);
+}
+
+.jsTable thead tr th {
+    padding: 5px;
+}
+
+.jsTable thead tr th:nth-child(1) {
+    width: 20%;
+}
+
+.jsTable tbody tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.10);
+}
+
+.jsTable tbody tr td {
+    padding: 5px;
+}
+
+.jsTable tbody tr th {
+    padding: 5px;
+}
+
+.jsTable tbody tr th:nth-child(1) {
+    padding-left: 15px;
+}
+
+.jsTable thead tr th:nth-last-child(1) {
+    padding-right: 15px;
+}
+
+.jsTable tbody tr td:nth-last-child(1) {
+    padding-right: 15px;
+}
