@@ -1,6 +1,11 @@
 import { Text, View } from "react-native";
+import { isNotBlankString, nameToInitials, stringToHslColor, trimEllipsis } from "mdb-core-js";
 
 export default function Index() {
+
+  
+  const isTrue = isNotBlankString("test");
+
   return (
     <View
       style={{
@@ -9,7 +14,7 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+      <Text>Edit app/index.tsx to edit this screen. {isTrue && "worked"}</Text>
     </View>
-  );
+);
 }
