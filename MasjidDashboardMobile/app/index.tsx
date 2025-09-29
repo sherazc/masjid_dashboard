@@ -1,5 +1,5 @@
+import { isNotBlankString } from "mdb-core-js";
 import { Text, View } from "react-native";
-import { isNotBlankString, nameToInitials, stringToHslColor, trimEllipsis } from "mdb-core-js";
 
 export default function Index() {
 
