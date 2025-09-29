@@ -1,14 +1,13 @@
-import React, { useEffect } from "react";
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Company, LoadingStatus } from "mdb-core-js";
+import React, { useEffect } from "react";
+import { recoverAppFromStorage } from '../services/AppService';
+import { useTypedSelector } from '../store/rootReducer';
 import { CompanySelect } from './CompanySelect/CompanySelect';
 import { PrayerTime } from './PrayerTime/PrayerTime';
-import { Settings } from './Settings';
-import { useTypedSelector } from '../store/rootReducer'
-import { Company, LoadingStatus } from "mdb-core-js";
-import { recoverAppFromStorage } from '../services/AppService';
-import { RegisterInfo } from './RegisterInfo';
 import { RecoveringFromStorageImage } from "./RecoveringFromStorageImage";
+import { RegisterInfo } from './RegisterInfo';
+import { Settings } from './Settings';
 
 const Stack = createStackNavigator<MdParamList>();
 
@@ -50,7 +49,7 @@ export const NavRoutes: React.FC = () => {
         return <RecoveringFromStorageImage />
     } else {
         return (
-            <NavigationContainer>
+            // <NavigationContainer>
                 
                 <Stack.Navigator initialRouteName="CompanySelect">
                     <Stack.Screen name="CompanySelect" component={CompanySelect} options={noHeaderOptions} />
@@ -59,7 +58,7 @@ export const NavRoutes: React.FC = () => {
                     <Stack.Screen name="RegisterInfo" component={RegisterInfo} options={noHeaderOptions} />
                 </Stack.Navigator>
                 
-            </NavigationContainer>
+            // </NavigationContainer>
         );
     }
 }
