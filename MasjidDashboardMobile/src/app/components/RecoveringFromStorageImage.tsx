@@ -10,7 +10,7 @@ export const RecoveringFromStorageImage: React.FC<Props> = () => {
         <SafeAreaView style={styles.container}>
             <View style={styles.container}>
                 <ImageBackground
-                    source={require('../../assets/images/splash-screens.png')}
+                    source={require('../../../assets/images/splash-screens.png')}
                     resizeMode="center"
                     style={styles.image}>
                     <Text style={styles.text}>Loading...</Text>
