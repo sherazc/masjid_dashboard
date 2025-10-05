@@ -1,9 +1,9 @@
+import { processPrayerTimeMessage } from '@/src/services-react/PrayerTimeMessageProcessor';
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { CompanyData, PrayersDay } from "mdb-core-js";
 import React, { useEffect, useState } from "react";
 import { BackHandler, Image, Platform, SafeAreaView, StyleSheet, View } from "react-native";
-import { processPrayerTimeMessage } from "../../../services-react/PrayerTimeMessageProcessor";
 import { beginCompanyDataInterval, destroyTrackerInterval, } from '../../services/AppService';
 import { ConstantsStyles } from "../../services/Constants";
 import { processPrayerTime } from "../../services/PrayerTimeProcessor";

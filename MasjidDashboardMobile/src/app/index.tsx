@@ -1,9 +1,9 @@
 import { StatusBar, Text, View } from "react-native";
 import { Provider } from "react-redux";
-import store from "./store/rootReducer";
-import { ConstantsStyles } from "./services/Constants";
-import { NavRoutes } from "./components/NavRoutes";
 import { NavigationContainer } from "@react-navigation/native";
+import store from "../store/rootReducer";
+import { ConstantsStyles } from "../services/Constants";
+import { NavRoutes } from "../components/NavRoutes";
 
 export default function Index() {
 
