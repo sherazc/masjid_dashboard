@@ -1,8 +1,7 @@
+import { millisecondDurationToMinSecTime, PrayerTimeSummary } from "mdb-core-js";
 import React from 'react';
-import { createEmptyPrayerTimeSummaryMessage, PrayerTimeSummaryMessage } from "../types/react-types";
-import { PrayerTimeSummary } from "mdb-core-js";
 import { StyleSheet, Text } from 'react-native';
-import { millisecondDurationToMinSecTime } from "mdb-core-js";
+import { createEmptyPrayerTimeSummaryMessage, PrayerTimeSummaryMessage } from "../app/types/react-types";
 
 export const processPrayerTimeMessage = (prayerTimeSummary?: PrayerTimeSummary): PrayerTimeSummaryMessage => {
     const result = createEmptyPrayerTimeSummaryMessage();

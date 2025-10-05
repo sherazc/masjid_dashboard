@@ -1,19 +1,19 @@
+import { RouteProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { CompanyData, PrayersDay } from "mdb-core-js";
 import React, { useEffect, useState } from "react";
 import { BackHandler, Image, Platform, SafeAreaView, StyleSheet, View } from "react-native";
-import { StackNavigationProp } from '@react-navigation/stack';
-import { MdParamList } from "../NavRoutes";
-import { RouteProp } from '@react-navigation/native';
-import { useTypedSelector } from "../../store/rootReducer";
-import { CompanyData, PrayersDay } from "mdb-core-js";
-import { Loading } from "../Loading";
-import { PrayerTimeGrid } from './PrayerTimeGrid';
+import { processPrayerTimeMessage } from "../../../services-react/PrayerTimeMessageProcessor";
 import { beginCompanyDataInterval, destroyTrackerInterval, } from '../../services/AppService';
-import { TodaysDetail } from "./TodaysDetail";
-import { createEmptyPrayerTimeSummaryMessage, PrayerTimeSummaryMessage } from "../../types/react-types";
-import { processPrayerTime } from "../../services/PrayerTimeProcessor";
-import { processPrayerTimeMessage } from "../../services-react/PrayerTimeMessageProcessor";
 import { ConstantsStyles } from "../../services/Constants";
+import { processPrayerTime } from "../../services/PrayerTimeProcessor";
 import { storeDispatchCompanyData } from "../../store/ReduxStoreService";
+import { useTypedSelector } from "../../store/rootReducer";
+import { createEmptyPrayerTimeSummaryMessage, PrayerTimeSummaryMessage } from "../../types/react-types";
+import { Loading } from "../Loading";
+import { MdParamList } from "../NavRoutes";
+import { PrayerTimeGrid } from './PrayerTimeGrid';
+import { TodaysDetail } from "./TodaysDetail";
 
 interface Props {
     navigation: StackNavigationProp<MdParamList, "PrayerTime">;
