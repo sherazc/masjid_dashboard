@@ -39,7 +39,7 @@ export const NavRoutes: React.FC = () => {
         useEffect(() => {
             Dimensions.addEventListener("change", onChange);
             return () => {
-                Dimensions.removeEventListener("change", onChange);
+                ç√√.removeEventListener("change", onChange);
             };
         });
     */

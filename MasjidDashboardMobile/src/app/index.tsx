@@ -6,8 +6,7 @@ import { ConstantsStyles } from "../services/Constants";
 import { NavRoutes } from "../components/NavRoutes";
 import { Company } from "mdb-core-js";
 import { createStackNavigator } from "@react-navigation/stack";
-
-
+import { CompanySelect } from "./company/CompanySelect";
 
 const Stack = createStackNavigator<MdParamList>();
 
@@ -28,7 +27,8 @@ export default function Index() {
   return (
     <Provider store={store}>
       <StatusBar barStyle="light-content" backgroundColor={ConstantsStyles.color.background2} />
-      <NavRoutes />
+      {/* <NavRoutes /> */}
+      <CompanySelect />
     </Provider>
   );
 

@@ -2,16 +2,18 @@ import React, { useEffect } from "react";
 import { Image, StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { MdParamList } from "../NavRoutes";
+
 import { useTypedSelector } from '../../store/rootReducer';
 
 // import { Brand } from './Brand';
-import { CompanyList } from './CompanyList';
 import { ConstantsStyles } from "../../services/Constants";
 import { Info } from '../../images/Info';
 import { LoadingStatus } from "mdb-core-js";
-import { beginCompanyListDataInterval, destroyTrackerInterval } from "../../services/AppService";
-import { Brand } from "./Brand";
+import { beginCompanyListDataInterval, destroyTrackerInterval, recoverAppFromStorage } from "../../services/AppService";
+
+import { MdParamList } from "@/src/components/NavRoutes";
+import { Brand } from "@/src/components/CompanySelect/Brand";
+import { CompanyList } from "@/src/components/CompanySelect/CompanyList";
 
 // TODO: Fix inline styles
 interface Props {
@@ -23,18 +25,20 @@ export const CompanySelect: React.FC<Props> = ({ navigation }) => {
     const companyData = useTypedSelector(state => state.companyData);
     const companyListData = useTypedSelector(state => state.companyListData);
     const loading = useTypedSelector(state => state.loading);
+    
+    useEffect(() => {
+        recoverAppFromStorage();
+    }, []);
 
     // Navigate to PrayerTime because there is a selected company.
-    useEffect(() => {
-        const unsubscribe = navigation.addListener('focus', () => {
-            if (companyData.company && companyData.company.id) {
-                navigation.navigate("PrayerTime", {});
-            }
-        });
-        return unsubscribe;
-    }, [navigation, companyData]);
-
-
+    // useEffect(() => {
+    //     const unsubscribe = navigation.addListener('focus', () => {
+    //         if (companyData.company && companyData.company.id) {
+    //             navigation.navigate("PrayerTime", {});
+    //         }
+    //     });
+    //     return unsubscribe;
+    // }, [navigation, companyData]);
     
     useEffect(() => {
         if (loading.recoverInitState === LoadingStatus.COMPLETE || loading.recoverInitState === LoadingStatus.FAILED) {
