@@ -6,7 +6,6 @@ import ArrowRight from "../../images/ArrowRight";
 import { ConstantsStyles } from "../../services/Constants";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { MdParamList } from "../NavRoutes";
-import { StackActions } from "@react-navigation/native";
 
 interface Props {
     companyListData: CompanyListData;

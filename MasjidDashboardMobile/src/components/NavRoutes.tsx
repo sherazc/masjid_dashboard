@@ -3,11 +3,11 @@ import { Company, LoadingStatus } from "mdb-core-js";
 import React, { useEffect } from "react";
 import { recoverAppFromStorage } from '../services/AppService';
 import { useTypedSelector } from '../store/rootReducer';
-import { CompanySelect } from './CompanySelect/CompanySelect';
 import { PrayerTime } from './PrayerTime/PrayerTime';
 import { RecoveringFromStorageImage } from "./RecoveringFromStorageImage";
 import { RegisterInfo } from './RegisterInfo';
 import { Settings } from './Settings';
+import { CompanySelect } from '../app/company/CompanySelect';
 
 const Stack = createStackNavigator<MdParamList>();
 
