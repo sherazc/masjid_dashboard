@@ -10,19 +10,21 @@ import { processPrayerTime } from "../../services/PrayerTimeProcessor";
 import { storeDispatchCompanyData } from "../../store/ReduxStoreService";
 import { useTypedSelector } from "../../store/rootReducer";
 import { createEmptyPrayerTimeSummaryMessage, PrayerTimeSummaryMessage } from "../../types/react-types";
-import { Loading } from "../Loading";
-import { MdParamList } from "../../app/NavRoutes";
-import { PrayerTimeGrid } from './PrayerTimeGrid';
-import { TodaysDetail } from "./TodaysDetail";
+import { MdParamList } from '@/src/app/NavRoutes';
+import { Loading } from '@/src/components/Loading';
+import { TodaysDetail } from '@/src/components/PrayerTime/TodaysDetail';
+import { PrayerTimeGrid } from '@/src/components/PrayerTime/PrayerTimeGrid';
 
 interface Props {
     navigation: StackNavigationProp<MdParamList, "PrayerTime">;
     route: RouteProp<MdParamList, "PrayerTime">;
 }
 
-export const PrayerTime: React.FC<Props> = ({ navigation, route }) => {
+const PrayerTime: React.FC<Props> = ({ navigation, route }) => {
     const [prayerTimeMessage, setPrayerTimeMessage] = useState(createEmptyPrayerTimeSummaryMessage());
     const companyData = useTypedSelector(state => state.companyData);
+    
+    
 
 
     // TODO: make prayerTimeMessageInterval part of PrayerTimeSummaryMessage interface
@@ -39,12 +41,7 @@ export const PrayerTime: React.FC<Props> = ({ navigation, route }) => {
         if (isSameCompanySelected(companyData, route)) return;
         if (route.params && route.params.selectedCompany) {
             companyData.company = route.params.selectedCompany;
-            storeDispatchCompanyData(companyData)
-            
-            // dispatch({
-            //     type: "COMPANY_DATA_SET",
-            //     payload: companyData
-            // });
+            storeDispatchCompanyData(companyData);
         }
 
         if (Platform.OS === 'android') {
@@ -212,3 +209,6 @@ const styles = StyleSheet.create({
         justifyContent: "center"
     }
 });
+
+
+export default PrayerTime;

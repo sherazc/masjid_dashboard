@@ -61,7 +61,7 @@ export const CompanySelect: React.FC<Props> = ({ navigation }) => {
                     <Brand />
                 </View>
                 <View style={styles.companyList}>
-                    <CompanyList navigation={navigation} companyListData={companyListData} />
+                    <CompanyList companyListData={companyListData} />
                 </View>
                 <View style={{
                     height: "8%",

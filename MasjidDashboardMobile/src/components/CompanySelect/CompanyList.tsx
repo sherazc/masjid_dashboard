@@ -4,27 +4,28 @@ import { CompanyListData, Company } from "mdb-core-js";
 import { isNotBlankString, nameToInitials, stringToHslColor, trimEllipsis } from "mdb-core-js";
 import ArrowRight from "../../images/ArrowRight";
 import { ConstantsStyles } from "../../services/Constants";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { MdParamList } from "../../app/NavRoutes";
+import { useRouter } from "expo-router";
 
 interface Props {
     companyListData: CompanyListData;
-    navigation: StackNavigationProp<MdParamList, "CompanySelect">;
 }
 
-export const CompanyList: React.FC<Props> = ({ companyListData, navigation }) => {
+export const CompanyList: React.FC<Props> = ({ companyListData }) => {
+    const router = useRouter();
 
     const onSetCompany = (selectedCompanyId: string) => {
         if (!selectedCompanyId) {
             return;
         }
-        const selectedCompany = companyListData.companies.find(c => c.id === selectedCompanyId);
-        if (selectedCompany) {
+        
+        router.push(`/prayer/${selectedCompanyId}`);
+        // const selectedCompany = companyListData.companies.find(c => c.id === selectedCompanyId);
+        // if (selectedCompany) {
             // This will add screen to the stack
-            navigation.navigate("PrayerTime", { selectedCompany });
+            // navigation.navigate("PrayerTime", { selectedCompany });
             // This will not
             // navigation.dispatch(StackActions.replace("PrayerTime", { selectedCompany }));
-        }
+        // }
     }
 
     const buildCompanyFlatList = (cld: (CompanyListData | undefined)) => {
