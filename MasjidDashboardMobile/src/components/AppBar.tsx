@@ -3,7 +3,7 @@ import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import ArrowLeft from '../images/ArrowLeft';
 import { ConstantsStyles } from '../services/Constants';
-import { MdParamList } from './NavRoutes';
+import { MdParamList } from '../app/NavRoutes';
 
 interface Props {
     backScreenName: string;

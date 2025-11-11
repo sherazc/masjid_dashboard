@@ -10,7 +10,7 @@ import { processPrayerTime } from "../../services/PrayerTimeProcessor";
 import { storeDispatchCompanyData } from "../../store/ReduxStoreService";
 import { useTypedSelector } from "../../store/rootReducer";
 import { createEmptyPrayerTimeSummaryMessage, PrayerTimeSummaryMessage } from "../../types/react-types";
-import { MdParamList } from '@/src/components/NavRoutes';
+import { MdParamList } from '@/src/app/NavRoutes';
 import { Loading } from '@/src/components/Loading';
 import { TodaysDetail } from '@/src/components/PrayerTime/TodaysDetail';
 import { PrayerTimeGrid } from '@/src/components/PrayerTime/PrayerTimeGrid';

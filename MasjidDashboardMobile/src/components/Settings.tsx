@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Text, SafeAreaView, TouchableOpacity } from "react-native";
 import { StackNavigationProp } from '@react-navigation/stack';
-import { MdParamList } from "./NavRoutes";
+import { MdParamList } from "../app/NavRoutes";
 import { RouteProp } from '@react-navigation/native';
 import { ConstantsStyles } from '../services/Constants';
 import { AppBar } from "./AppBar";

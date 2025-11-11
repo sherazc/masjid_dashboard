@@ -11,7 +11,7 @@ import { storeDispatchCompanyData } from "../../store/ReduxStoreService";
 import { useTypedSelector } from "../../store/rootReducer";
 import { createEmptyPrayerTimeSummaryMessage, PrayerTimeSummaryMessage } from "../../types/react-types";
 import { Loading } from "../Loading";
-import { MdParamList } from "../NavRoutes";
+import { MdParamList } from "../../app/NavRoutes";
 import { PrayerTimeGrid } from './PrayerTimeGrid';
 import { TodaysDetail } from "./TodaysDetail";
 

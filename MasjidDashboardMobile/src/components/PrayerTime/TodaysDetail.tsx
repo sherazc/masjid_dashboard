@@ -10,7 +10,7 @@ import { dateToTime12h } from "mdb-core-js";
 import { findConfigurationByName, trimEllipsis } from "mdb-core-js";
 import { PrayerTimeSummaryMessage } from "../../types/react-types";
 import { CompanyData } from "mdb-core-js";
-import { MdParamList } from "../NavRoutes";
+import { MdParamList } from "../../app/NavRoutes";
 import Refresh from "../../images/Refresh";
 import {restartCompanyDataInterval} from "../../services/AppService";
 

@@ -11,7 +11,7 @@ import { Info } from '../../images/Info';
 import { LoadingStatus } from "mdb-core-js";
 import { beginCompanyListDataInterval, destroyTrackerInterval, recoverAppFromStorage } from "../../services/AppService";
 
-import { MdParamList } from "@/src/components/NavRoutes";
+import { MdParamList } from "@/src/app/NavRoutes";
 import { Brand } from "@/src/components/CompanySelect/Brand";
 import { CompanyList } from "@/src/components/CompanySelect/CompanyList";
 

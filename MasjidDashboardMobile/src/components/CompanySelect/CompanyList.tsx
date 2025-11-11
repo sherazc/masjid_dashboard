@@ -5,7 +5,7 @@ import { isNotBlankString, nameToInitials, stringToHslColor, trimEllipsis } from
 import ArrowRight from "../../images/ArrowRight";
 import { ConstantsStyles } from "../../services/Constants";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { MdParamList } from "../NavRoutes";
+import { MdParamList } from "../../app/NavRoutes";
 
 interface Props {
     companyListData: CompanyListData;
