@@ -14,6 +14,7 @@ import { beginCompanyListDataInterval, destroyTrackerInterval, recoverAppFromSto
 import { MdParamList } from "@/src/app/NavRoutes";
 import { Brand } from "@/src/components/CompanySelect/Brand";
 import { CompanyList } from "@/src/components/CompanySelect/CompanyList";
+import { Link } from "expo-router";
 
 // TODO: Fix inline styles
 interface Props {
@@ -66,8 +67,9 @@ export const CompanySelect: React.FC<Props> = ({ navigation }) => {
                     height: "8%",
                     alignItems: "center", justifyContent: "center",
                 }}>
-                    <TouchableOpacity
-                        onPress={() => { navigation.navigate("RegisterInfo", {backScreenName: "Masjid"}) }}
+                    <Link href="/common/RegisterInfo">
+                    <View
+                        // onPress={() => { navigation.navigate("RegisterInfo", {backScreenName: "Masjid"}) }}
                         style={{
                         flexDirection: "row",alignItems: "center", justifyContent: "center",
                         backgroundColor: ConstantsStyles.color.background2,
@@ -80,8 +82,10 @@ export const CompanySelect: React.FC<Props> = ({ navigation }) => {
                         <Text style={{fontSize: 15, color: ConstantsStyles.text.colorLight}}>
                             Become part of Masjid Dashboard
                         </Text>
-                    </TouchableOpacity>
+                    </View>
+                    </Link>
                 </View>
+                
             </View>
         </View>
     );

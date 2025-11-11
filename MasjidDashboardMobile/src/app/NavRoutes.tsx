@@ -3,14 +3,12 @@ import { Company, LoadingStatus } from "mdb-core-js";
 import React, { useEffect } from "react";
 import { recoverAppFromStorage } from '../services/AppService';
 import { useTypedSelector } from '../store/rootReducer';
-import { PrayerTime } from '../components/PrayerTime/PrayerTime';
 import { RecoveringFromStorageImage } from "../components/RecoveringFromStorageImage";
-import { RegisterInfo } from '../components/RegisterInfo';
-import { Settings } from '../components/Settings';
 import { CompanySelect } from './company/CompanySelect';
 
 const Stack = createStackNavigator<MdParamList>();
 
+// @Deprecated
 export type MdParamList = {
     CompanySelect: undefined;
     PrayerTime: { selectedCompany?: Company };
@@ -49,14 +47,15 @@ export const NavRoutes: React.FC = () => {
         return <RecoveringFromStorageImage />
     } else {
         return (
+            <CompanySelect />
             // <NavigationContainer>
                 
-                <Stack.Navigator initialRouteName="CompanySelect">
-                    <Stack.Screen name="CompanySelect" component={CompanySelect} options={noHeaderOptions} />
-                    <Stack.Screen name="PrayerTime" component={PrayerTime} options={noHeaderOptions} />
-                    <Stack.Screen name="Settings" component={Settings} options={noHeaderOptions} />
-                    <Stack.Screen name="RegisterInfo" component={RegisterInfo} options={noHeaderOptions} />
-                </Stack.Navigator>
+                // <Stack.Navigator initialRouteName="CompanySelect">
+                //     <Stack.Screen name="CompanySelect" component={CompanySelect} options={noHeaderOptions} />
+                //     <Stack.Screen name="PrayerTime" component={PrayerTime} options={noHeaderOptions} />
+                //     <Stack.Screen name="Settings" component={Settings} options={noHeaderOptions} />
+                //     <Stack.Screen name="RegisterInfo" component={RegisterInfo} options={noHeaderOptions} />
+                // </Stack.Navigator>
                 
             // </NavigationContainer>
         );
