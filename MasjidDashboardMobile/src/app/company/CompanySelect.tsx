@@ -23,7 +23,7 @@ interface Props {
 }
 
 export const CompanySelect: React.FC<Props> = ({ navigation }) => {
-    const companyData = useTypedSelector(state => state.companyData);
+    // const companyData = useTypedSelector(state => state.companyData);
     const companyListData = useTypedSelector(state => state.companyListData);
     const loading = useTypedSelector(state => state.loading);
     

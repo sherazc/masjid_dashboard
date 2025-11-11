@@ -1,7 +1,7 @@
 import { processPrayerTimeMessage } from '@/src/services-react/PrayerTimeMessageProcessor';
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { CompanyData, PrayersDay } from "mdb-core-js";
+import { Company, CompanyData, PrayersDay } from "mdb-core-js";
 import React, { useEffect, useState } from "react";
 import { BackHandler, Image, Platform, SafeAreaView, StyleSheet, View } from "react-native";
 import { beginCompanyDataInterval, destroyTrackerInterval, } from '../../services/AppService';
@@ -14,6 +14,7 @@ import { MdParamList } from '@/src/app/NavRoutes';
 import { Loading } from '@/src/components/Loading';
 import { TodaysDetail } from '@/src/components/PrayerTime/TodaysDetail';
 import { PrayerTimeGrid } from '@/src/components/PrayerTime/PrayerTimeGrid';
+import { useLocalSearchParams } from 'expo-router';
 
 interface Props {
     navigation: StackNavigationProp<MdParamList, "PrayerTime">;
@@ -23,7 +24,9 @@ interface Props {
 const PrayerTime: React.FC<Props> = ({ navigation, route }) => {
     const [prayerTimeMessage, setPrayerTimeMessage] = useState(createEmptyPrayerTimeSummaryMessage());
     const companyData = useTypedSelector(state => state.companyData);
-    
+    const {companyId} = useLocalSearchParams<{companyId: string}>();
+    const companyListData = useTypedSelector(state => state.companyListData);
+    const selectedCompany = companyListData.companies.find(c => c.id === companyId);
     
 
 
@@ -38,9 +41,9 @@ const PrayerTime: React.FC<Props> = ({ navigation, route }) => {
 
     // Inits
     useEffect(() => {
-        if (isSameCompanySelected(companyData, route)) return;
-        if (route.params && route.params.selectedCompany) {
-            companyData.company = route.params.selectedCompany;
+        if (isSameCompanySelected(companyData, selectedCompany)) return;
+        if (selectedCompany) {
+            companyData.company = selectedCompany;
             storeDispatchCompanyData(companyData);
         }
 
@@ -169,10 +172,10 @@ const PrayerTime: React.FC<Props> = ({ navigation, route }) => {
     );
 }
 
-const isSameCompanySelected = (companyData: CompanyData, routeParams: RouteProp<MdParamList, "PrayerTime">) => {
+const isSameCompanySelected = (companyData: CompanyData, selectedCompany: Company | undefined) => {
     return companyData && companyData.company && companyData.company.id
-        && routeParams.params && routeParams.params.selectedCompany
-        && companyData.company.id !== routeParams.params.selectedCompany.id;
+        && selectedCompany && selectedCompany.id
+        && companyData.company.id !== selectedCompany.id;
 }
 
 const styles = StyleSheet.create({
