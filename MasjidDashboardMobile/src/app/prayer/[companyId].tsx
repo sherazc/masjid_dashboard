@@ -3,7 +3,7 @@ import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Company, CompanyData, PrayersDay } from "mdb-core-js";
 import React, { useEffect, useState } from "react";
-import { BackHandler, Image, Platform, SafeAreaView, StyleSheet, View } from "react-native";
+import { BackHandler, Image, Platform, StyleSheet, View } from "react-native";
 import { beginCompanyDataInterval, destroyTrackerInterval, } from '../../services/AppService';
 import { ConstantsStyles } from "../../services/Constants";
 import { processPrayerTime } from "../../services/PrayerTimeProcessor";
@@ -14,7 +14,7 @@ import { MdParamList } from '@/src/app/NavRoutes';
 import { Loading } from '@/src/components/Loading';
 import { TodaysDetail } from '@/src/components/PrayerTime/TodaysDetail';
 import { PrayerTimeGrid } from '@/src/components/PrayerTime/PrayerTimeGrid';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 
 interface Props {
     navigation: StackNavigationProp<MdParamList, "PrayerTime">;
@@ -24,11 +24,10 @@ interface Props {
 const PrayerTime: React.FC<Props> = ({ navigation, route }) => {
     const [prayerTimeMessage, setPrayerTimeMessage] = useState(createEmptyPrayerTimeSummaryMessage());
     const companyData = useTypedSelector(state => state.companyData);
-    const {companyId} = useLocalSearchParams<{companyId: string}>();
+    const { companyId } = useLocalSearchParams<{ companyId: string }>();
     const companyListData = useTypedSelector(state => state.companyListData);
     const selectedCompany = companyListData.companies.find(c => c.id === companyId);
-    
-
+    const router = useRouter();
 
     // TODO: make prayerTimeMessageInterval part of PrayerTimeSummaryMessage interface
     let prayerTimeMessageInterval: NodeJS.Timeout;
@@ -113,18 +112,10 @@ const PrayerTime: React.FC<Props> = ({ navigation, route }) => {
 
     // Navigate to CompanySelect because there is no selected company
     useEffect(() => {
-        const unsubscribe = navigation.addListener('focus', () => {
-            if (!companyData.company || !companyData.company.id) {
-                navigation.navigate("CompanySelect");
-            }
-        });
-        return unsubscribe;
-    }, [navigation, companyData]);
-
-
-
-
-
+        if (!companyData || !companyData.company || !companyData.company.id) {
+            router.push("/company/CompanySelect");
+        }
+    }, [companyData]);
 
     // Interval to update Azan, Salah and Jammat time messages on screen
     const startPrayerTimeMessage = (prayer: PrayersDay, setPrayerTimeMessage: React.Dispatch<React.SetStateAction<PrayerTimeSummaryMessage>>) => {
@@ -139,34 +130,33 @@ const PrayerTime: React.FC<Props> = ({ navigation, route }) => {
                 <Image source={require('../../images/background3.png')} style={styles.backgroundImage} />
             </View>
             <View style={styles.content}>
-                <SafeAreaView>
-                    {(!companyData || !companyData.prayer || !companyData.prayer.date) &&
-                        <Loading style={{ color: ConstantsStyles.text.colorLight }} />
-                    }
-                    {(companyData && companyData.prayer && companyData.prayer.date) && <>
-                        <View style={styles.todaysDetail}>
-                            <TodaysDetail
-                                navigation={navigation}
-                                prayerTimeMessage={prayerTimeMessage}
-                                companyData={companyData} />
-                        </View>
+                {(!companyData || !companyData.prayer || !companyData.prayer.date) &&
+                    <Loading style={{ color: ConstantsStyles.text.colorLight }} />
+                }
+                {(companyData && companyData.prayer && companyData.prayer.date) && <>
+                    <View style={styles.todaysDetail}>
+                        <TodaysDetail
+                            navigation={navigation}
+                            prayerTimeMessage={prayerTimeMessage}
+                            companyData={companyData} />
+                    </View>
+                    <View style={{
+                        height: 3,
+                        alignItems: "center",
+                        justifyContent: "center"
+                    }}>
                         <View style={{
                             height: 3,
-                            alignItems: "center",
-                            justifyContent: "center"
-                        }}>
-                            <View style={{
-                                height: 3,
-                                backgroundColor: ConstantsStyles.color.lines,
-                                borderRadius: 3,
-                                width: "70%"
-                            }} />
-                        </View>
-                        <View style={styles.prayerTimeGrid}>
-                            <PrayerTimeGrid companyData={companyData} prayerTimeMessage={prayerTimeMessage} prayer={companyData.prayer} />
-                        </View>
-                    </>}
-                </SafeAreaView>
+                            backgroundColor: ConstantsStyles.color.lines,
+                            borderRadius: 3,
+                            width: "70%"
+                        }} />
+                    </View>
+                    <View style={styles.prayerTimeGrid}>
+                        <PrayerTimeGrid companyData={companyData} prayerTimeMessage={prayerTimeMessage} prayer={companyData.prayer} />
+                    </View>
+                </>}
+
             </View>
         </View>
     );
