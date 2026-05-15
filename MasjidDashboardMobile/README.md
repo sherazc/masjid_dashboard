@@ -1,50 +1,41 @@
-# Welcome to your Expo app 👋
+# Masjid Dashboard
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Project Setup
 
-## Get started
+Download and install JDK 21. The way project stands, it does not work in JDK 25
 
-1. Install dependencies
+Created jenv's .java-version file with 21 in it.
 
-   ```bash
-   npm install
-   ```
+Set ANDROID_HOME in `.bash_profile` and `.zprofile`
 
-2. Start the app
+`export ANDROID_HOME=/Users/sheraz/Library/Android/sdk`
 
-   ```bash
-   npx expo start
-   ```
+`script-clean-all.sh`: Use this script to clean all the cache
 
-In the output, you'll find options to open the app in a
+## AVD
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Download and install Android Studio
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Open Device Manager and create a AVD.
 
-## Get a fresh project
+`$ANDROID_HOME/emulator/emulator -list-avds`: Use this command to list all AVDs
 
-When you're ready, run:
+Update `script-start-avd.sh` with AVD's name
 
-```bash
-npm run reset-project
-```
+run `script-start-avd.sh` start AVD
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Simulator
 
-## Learn more
+Download install XCode
 
-To learn more about developing your project with Expo, look at the following resources:
+run `script-start-simulator.sh`
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Start Project
 
-## Join the community
+`npm install`
 
-Join our community of developers creating universal apps.
+`npm run start`
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+`npm run ios`
+
+`npm run android`
