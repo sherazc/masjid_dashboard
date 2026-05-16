@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, Text, SafeAreaView, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
 import { createDefaultSettingData, } from "mdb-core-js";
-import {storeDeleteCompanyData, storeDispatchSetting,} from "../../store/ReduxStoreService";
+import { storeDeleteCompanyData, storeDispatchSetting, } from "../../store/ReduxStoreService";
 import { destroyTrackerInterval } from "../../services/AppService";
 import {
     removeNotificationsAsync,
@@ -61,73 +61,68 @@ const Settings: React.FC<Props> = () => {
     }
 
     return (
-        <>
-            <SafeAreaView style={styles.safeAreaViewTop} />
-            <SafeAreaView style={styles.safeAreaViewBottom}>
-                <View style={styles.container}>
-                    {/* Reset Masjid */}
-                    <TouchableOpacity style={styles.settingRow} onPress={onResetMasjid}>
-                        <View style={styles.nameView}>
-                            <Text style={styles.name}>
-                                Reset Masjid
-                            </Text>
-                        </View>
-                        <View style={styles.iconView}>
-                            <Reset fill={ConstantsStyles.text.colorLight} width={20} height={20} />
-                        </View>
-                    </TouchableOpacity>
-                    <View style={styles.separator} />
-                    {/* Azan reminder */}
-                    <TouchableOpacity style={styles.settingRow} onPress={onCheckAzan}>
-                        <View style={styles.nameView}>
-                            <Text style={styles.name}>
-                                Azan reminder
-                            </Text>
-                        </View>
-                        <View style={styles.iconView}>
-                            <Checkbox
-                                onPress={onCheckAzan}
-                                checked={setting.azanAlert}
-                                fill={ConstantsStyles.text.colorLight}
-                                width={20} height={20} />
-                        </View>
-                    </TouchableOpacity>
-                    <View style={styles.separator} />
-                    {/* Iqama reminder */}
-                    <TouchableOpacity style={styles.settingRow} onPress={onCheckIqama}>
-                        <View style={styles.nameView}>
-                            <Text style={styles.name}>
-                                Iqama reminder
-                            </Text>
-                        </View>
-                        <View style={styles.iconView}>
-                            <Checkbox
-                                onPress={onCheckIqama}
-                                checked={setting.iqamaAlert}
-                                fill={ConstantsStyles.text.colorLight}
-                                width={20} height={20} />
-                        </View>
-                    </TouchableOpacity>
-                    <View style={styles.separator} />
-                    {/* 10 minute iqama reminder */}
-                    <TouchableOpacity style={styles.settingRow} onPress={onCheckBeforeIqama}>
-                        <View style={styles.nameView}>
-                            <Text style={styles.name}>
-                                10 minute iqama reminder
-                            </Text>
-                        </View>
-                        <View style={styles.iconView}>
-                            <Checkbox
-                                onPress={onCheckBeforeIqama}
-                                checked={setting.beforeIqamaAlert}
-                                fill={ConstantsStyles.text.colorLight}
-                                width={20} height={20} />
-                        </View>
-                    </TouchableOpacity>
-                    <View style={styles.separator} />
+        <View style={styles.container}>
+            {/* Reset Masjid */}
+            <TouchableOpacity style={styles.settingRow} onPress={onResetMasjid}>
+                <View style={styles.nameView}>
+                    <Text style={styles.name}>
+                        Reset Masjid
+                    </Text>
                 </View>
-            </SafeAreaView>
-        </>
+                <View style={styles.iconView}>
+                    <Reset fill={ConstantsStyles.text.colorLight} width={20} height={20} />
+                </View>
+            </TouchableOpacity>
+            <View style={styles.separator} />
+            {/* Azan reminder */}
+            <TouchableOpacity style={styles.settingRow} onPress={onCheckAzan}>
+                <View style={styles.nameView}>
+                    <Text style={styles.name}>
+                        Azan reminder
+                    </Text>
+                </View>
+                <View style={styles.iconView}>
+                    <Checkbox
+                        onPress={onCheckAzan}
+                        checked={setting.azanAlert}
+                        fill={ConstantsStyles.text.colorLight}
+                        width={20} height={20} />
+                </View>
+            </TouchableOpacity>
+            <View style={styles.separator} />
+            {/* Iqama reminder */}
+            <TouchableOpacity style={styles.settingRow} onPress={onCheckIqama}>
+                <View style={styles.nameView}>
+                    <Text style={styles.name}>
+                        Iqama reminder
+                    </Text>
+                </View>
+                <View style={styles.iconView}>
+                    <Checkbox
+                        onPress={onCheckIqama}
+                        checked={setting.iqamaAlert}
+                        fill={ConstantsStyles.text.colorLight}
+                        width={20} height={20} />
+                </View>
+            </TouchableOpacity>
+            <View style={styles.separator} />
+            {/* 10 minute iqama reminder */}
+            <TouchableOpacity style={styles.settingRow} onPress={onCheckBeforeIqama}>
+                <View style={styles.nameView}>
+                    <Text style={styles.name}>
+                        10 minute iqama reminder
+                    </Text>
+                </View>
+                <View style={styles.iconView}>
+                    <Checkbox
+                        onPress={onCheckBeforeIqama}
+                        checked={setting.beforeIqamaAlert}
+                        fill={ConstantsStyles.text.colorLight}
+                        width={20} height={20} />
+                </View>
+            </TouchableOpacity>
+            <View style={styles.separator} />
+        </View>
     );
 }
 

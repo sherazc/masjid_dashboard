@@ -12,8 +12,6 @@ export default function RootLayout() {
           headerStyle: { backgroundColor: ConstantsStyles.color.background2 },
           headerTintColor: ConstantsStyles.text.colorLight,
         }}>
-
-        {/* Hide header only on the first screen (index) */}
         <Stack.Screen 
           name="index" 
           options={{ headerShown: false }}
@@ -21,6 +19,13 @@ export default function RootLayout() {
         <Stack.Screen 
           name="prayer/[companyId]" 
           options={{ headerShown: false }}
+        />
+        <Stack.Screen 
+          name="settings"
+          options={{ 
+            title: "Settings",
+            headerShown: true 
+          }}
         />
       </Stack>
     </Provider>
