@@ -17,11 +17,10 @@ import {
 } from "../services/notification/NotificationService";
 
 interface Props {
-    navigation: StackNavigationProp<MdParamList, "Settings">;
     route: RouteProp<MdParamList, "Settings">;
 }
 
-export const Settings: React.FC<Props> = ({ navigation, route }) => {
+export const Settings: React.FC<Props> = ({ route }) => {
 
     const companyData = useTypedSelector(state => state.companyData);
     const settingStore = useTypedSelector(state => state.setting);

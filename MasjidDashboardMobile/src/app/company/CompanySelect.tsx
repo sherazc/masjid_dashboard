@@ -1,27 +1,20 @@
 import React, { useEffect } from "react";
 import { Image, StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import { RouteProp } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
-
 import { useTypedSelector } from '../../store/rootReducer';
 
-// import { Brand } from './Brand';
 import { ConstantsStyles } from "../../services/Constants";
 import { Info } from '../../images/Info';
 import { LoadingStatus } from "mdb-core-js";
 import { beginCompanyListDataInterval, destroyTrackerInterval, recoverAppFromStorage } from "../../services/AppService";
 
-import { MdParamList } from "@/src/app/NavRoutes";
 import { Brand } from "@/src/components/CompanySelect/Brand";
 import { CompanyList } from "@/src/components/CompanySelect/CompanyList";
 import { Link } from "expo-router";
 
-// TODO: Fix inline styles
 interface Props {
 }
 
 export const CompanySelect: React.FC<Props> = () => {
-    // const companyData = useTypedSelector(state => state.companyData);
     const companyListData = useTypedSelector(state => state.companyListData);
     const loading = useTypedSelector(state => state.loading);
     

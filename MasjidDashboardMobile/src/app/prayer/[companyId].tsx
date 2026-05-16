@@ -1,5 +1,4 @@
 import { processPrayerTimeMessage } from '@/src/services-react/PrayerTimeMessageProcessor';
-import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Company, CompanyData, PrayersDay } from "mdb-core-js";
 import React, { useEffect, useState } from "react";
@@ -18,10 +17,9 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 
 interface Props {
     navigation: StackNavigationProp<MdParamList, "PrayerTime">;
-    route: RouteProp<MdParamList, "PrayerTime">;
 }
 
-const PrayerTime: React.FC<Props> = ({ navigation, route }) => {
+const PrayerTime: React.FC<Props> = ({ navigation }) => {
     const [prayerTimeMessage, setPrayerTimeMessage] = useState(createEmptyPrayerTimeSummaryMessage());
     const companyData = useTypedSelector(state => state.companyData);
     const { companyId } = useLocalSearchParams<{ companyId: string }>();
