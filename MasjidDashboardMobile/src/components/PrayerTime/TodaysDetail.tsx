@@ -13,14 +13,15 @@ import { CompanyData } from "mdb-core-js";
 import { MdParamList } from "../../app/NavRoutes";
 import Refresh from "../../images/Refresh";
 import {restartCompanyDataInterval} from "../../services/AppService";
+import { useRouter } from "expo-router";
 
 interface Props {
     prayerTimeMessage: PrayerTimeSummaryMessage;
     companyData: CompanyData;
-    navigation: StackNavigationProp<MdParamList, "PrayerTime">;
 }
 
-export const TodaysDetail: React.FC<Props> = ({ prayerTimeMessage, companyData, navigation }) => {
+export const TodaysDetail: React.FC<Props> = ({ prayerTimeMessage, companyData}) => {
+    const router = useRouter();
     return (
         <View>
             {/* Company name and Setting */}
@@ -37,7 +38,7 @@ export const TodaysDetail: React.FC<Props> = ({ prayerTimeMessage, companyData, 
                     </TouchableOpacity>
                 </View>
                 <View style={styles.settingView}>
-                    <TouchableOpacity onPress={() => { navigation.navigate("Settings", {backScreenName: "Salah"}) }}>
+                    <TouchableOpacity onPress={() => router.push("/Settings")}>
                         <Cog fill={ConstantsStyles.color.lines} />
                     </TouchableOpacity>
                 </View>

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Text, SafeAreaView, TouchableOpacity } from "react-native";
-import { StackNavigationProp } from '@react-navigation/stack';
-import { MdParamList } from "../app/NavRoutes";
+import { MdParamList } from "./NavRoutes";
 import { RouteProp } from '@react-navigation/native';
 import { ConstantsStyles } from '../services/Constants';
-import { AppBar } from "./AppBar";
+import { AppBar } from "../components/AppBar";
 import Reset from "../images/Reset";
-import { Checkbox } from './Checkbox';
+import { Checkbox } from '../components/Checkbox';
 import { createDefaultSettingData, } from "mdb-core-js";
 import {storeDeleteCompanyData, storeDispatchSetting,} from "../store/ReduxStoreService";
 import { useTypedSelector } from "../store/rootReducer";
@@ -17,10 +16,9 @@ import {
 } from "../services/notification/NotificationService";
 
 interface Props {
-    route: RouteProp<MdParamList, "Settings">;
 }
 
-export const Settings: React.FC<Props> = ({ route }) => {
+export const Settings: React.FC<Props> = () => {
 
     const companyData = useTypedSelector(state => state.companyData);
     const settingStore = useTypedSelector(state => state.setting);
@@ -64,20 +62,11 @@ export const Settings: React.FC<Props> = ({ route }) => {
         setupNotificationOnSettingChangedHandler(newSetting);
     }
 
-    const getBackScreenName = (route: RouteProp<MdParamList, "Settings">) => {
-        let result = "";
-        if (route && route.params && route.params.backScreenName) {
-            result = route.params.backScreenName;
-        }
-        return result;
-    }
-
     return (
         <>
             <SafeAreaView style={styles.safeAreaViewTop} />
             <SafeAreaView style={styles.safeAreaViewBottom}>
                 <View style={styles.container}>
-                    <AppBar navigation={navigation} backScreenName={getBackScreenName(route)} screenName="Settings" />
                     {/* Reset Masjid */}
                     <TouchableOpacity style={styles.settingRow} onPress={onResetMasjid}>
                         <View style={styles.nameView}>
