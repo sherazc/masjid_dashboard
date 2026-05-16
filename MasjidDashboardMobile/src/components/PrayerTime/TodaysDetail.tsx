@@ -10,7 +10,6 @@ import { dateToTime12h } from "mdb-core-js";
 import { findConfigurationByName, trimEllipsis } from "mdb-core-js";
 import { PrayerTimeSummaryMessage } from "../../types/react-types";
 import { CompanyData } from "mdb-core-js";
-import { MdParamList } from "../../app/NavRoutes";
 import Refresh from "../../images/Refresh";
 import {restartCompanyDataInterval} from "../../services/AppService";
 import { useRouter } from "expo-router";
@@ -38,7 +37,7 @@ export const TodaysDetail: React.FC<Props> = ({ prayerTimeMessage, companyData})
                     </TouchableOpacity>
                 </View>
                 <View style={styles.settingView}>
-                    <TouchableOpacity onPress={() => router.push("/Settings")}>
+                    <TouchableOpacity onPress={() => router.push("/settings")}>
                         <Cog fill={ConstantsStyles.color.lines} />
                     </TouchableOpacity>
                 </View>

@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Text, SafeAreaView, TouchableOpacity } from "react-native";
-import { MdParamList } from "./NavRoutes";
-import { RouteProp } from '@react-navigation/native';
-import { ConstantsStyles } from '../services/Constants';
-import { AppBar } from "../components/AppBar";
-import Reset from "../images/Reset";
-import { Checkbox } from '../components/Checkbox';
+
 import { createDefaultSettingData, } from "mdb-core-js";
-import {storeDeleteCompanyData, storeDispatchSetting,} from "../store/ReduxStoreService";
-import { useTypedSelector } from "../store/rootReducer";
-import { destroyTrackerInterval } from "../services/AppService";
+import {storeDeleteCompanyData, storeDispatchSetting,} from "../../store/ReduxStoreService";
+import { destroyTrackerInterval } from "../../services/AppService";
 import {
     removeNotificationsAsync,
     setupNotificationOnSettingChangedHandler,
-} from "../services/notification/NotificationService";
+} from "../../services/notification/NotificationService";
+import { ConstantsStyles } from "@/src/services/Constants";
+import Reset from "@/src/images/Reset";
+import { Checkbox } from "@/src/components/Checkbox";
+import { useTypedSelector } from "@/src/store/rootReducer";
 
 interface Props {
 }
 
-export const Settings: React.FC<Props> = () => {
+const Settings: React.FC<Props> = () => {
 
     const companyData = useTypedSelector(state => state.companyData);
     const settingStore = useTypedSelector(state => state.setting);
@@ -173,3 +171,5 @@ const styles = StyleSheet.create({
         backgroundColor: ConstantsStyles.color.lines
     }
 });
+
+export default Settings;
