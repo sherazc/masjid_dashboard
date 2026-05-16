@@ -18,11 +18,9 @@ import { Link } from "expo-router";
 
 // TODO: Fix inline styles
 interface Props {
-    navigation: StackNavigationProp<MdParamList, "CompanySelect">;
-    route: RouteProp<MdParamList, "CompanySelect">;
 }
 
-export const CompanySelect: React.FC<Props> = ({ navigation }) => {
+export const CompanySelect: React.FC<Props> = () => {
     // const companyData = useTypedSelector(state => state.companyData);
     const companyListData = useTypedSelector(state => state.companyListData);
     const loading = useTypedSelector(state => state.loading);

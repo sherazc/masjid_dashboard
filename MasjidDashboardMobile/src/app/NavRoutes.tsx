@@ -48,16 +48,6 @@ export const NavRoutes: React.FC = () => {
     } else {
         return (
             <CompanySelect />
-            // <NavigationContainer>
-                
-                // <Stack.Navigator initialRouteName="CompanySelect">
-                //     <Stack.Screen name="CompanySelect" component={CompanySelect} options={noHeaderOptions} />
-                //     <Stack.Screen name="PrayerTime" component={PrayerTime} options={noHeaderOptions} />
-                //     <Stack.Screen name="Settings" component={Settings} options={noHeaderOptions} />
-                //     <Stack.Screen name="RegisterInfo" component={RegisterInfo} options={noHeaderOptions} />
-                // </Stack.Navigator>
-                
-            // </NavigationContainer>
         );
     }
 }

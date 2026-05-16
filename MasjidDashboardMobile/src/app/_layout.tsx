@@ -11,8 +11,14 @@ export default function RootLayout() {
         screenOptions={{
           headerStyle: { backgroundColor: ConstantsStyles.color.background2 },
           headerTintColor: ConstantsStyles.text.colorLight,
-        }}
-      />
+        }}>
+
+        {/* Hide header only on the first screen (index) */}
+        <Stack.Screen 
+          name="index" 
+          options={{ headerShown: false }}
+        />
+      </Stack>
     </Provider>
   );
 }
