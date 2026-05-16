@@ -9,17 +9,14 @@ import { processPrayerTime } from "../../services/PrayerTimeProcessor";
 import { storeDispatchCompanyData } from "../../store/ReduxStoreService";
 import { useTypedSelector } from "../../store/rootReducer";
 import { createEmptyPrayerTimeSummaryMessage, PrayerTimeSummaryMessage } from "../../types/react-types";
-import { MdParamList } from '@/src/app/NavRoutes';
 import { Loading } from '@/src/components/Loading';
 import { TodaysDetail } from '@/src/components/PrayerTime/TodaysDetail';
 import { PrayerTimeGrid } from '@/src/components/PrayerTime/PrayerTimeGrid';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 
-interface Props {
-    navigation: StackNavigationProp<MdParamList, "PrayerTime">;
-}
+interface Props { }
 
-const PrayerTime: React.FC<Props> = ({ navigation }) => {
+const PrayerTime: React.FC<Props> = ({ }) => {
     const [prayerTimeMessage, setPrayerTimeMessage] = useState(createEmptyPrayerTimeSummaryMessage());
     const companyData = useTypedSelector(state => state.companyData);
     const { companyId } = useLocalSearchParams<{ companyId: string }>();
@@ -50,7 +47,6 @@ const PrayerTime: React.FC<Props> = ({ navigation }) => {
                 subscription.remove();
             };
         }
-
     }, []);
 
 
@@ -134,7 +130,6 @@ const PrayerTime: React.FC<Props> = ({ navigation }) => {
                 {(companyData && companyData.prayer && companyData.prayer.date) && <>
                     <View style={styles.todaysDetail}>
                         <TodaysDetail
-                            navigation={navigation}
                             prayerTimeMessage={prayerTimeMessage}
                             companyData={companyData} />
                     </View>
