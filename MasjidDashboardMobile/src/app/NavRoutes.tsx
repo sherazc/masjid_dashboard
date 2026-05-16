@@ -20,37 +20,37 @@ const noHeaderOptions = {
     header: () => null
 };
 
-export const NavRoutes: React.FC = () => {
-    const loading = useTypedSelector(state => state.loading);
+// export const NavRoutes: React.FC = () => {
+//     const loading = useTypedSelector(state => state.loading);
 
-    useEffect(() => {
-        recoverAppFromStorage();
-    }, []);
+//     useEffect(() => {
+//         recoverAppFromStorage();
+//     }, []);
 
-    /*
-    https://reactnative.dev/docs/dimensions
-    TODO: set dimension and in redux store and use it to size components
-        const onChange = ({ window, screen }) => {
-            setDimensions({ window, screen });
-        };
+//     /*
+//     https://reactnative.dev/docs/dimensions
+//     TODO: set dimension and in redux store and use it to size components
+//         const onChange = ({ window, screen }) => {
+//             setDimensions({ window, screen });
+//         };
     
-        useEffect(() => {
-            Dimensions.addEventListener("change", onChange);
-            return () => {
-                ç√√.removeEventListener("change", onChange);
-            };
-        });
-    */
+//         useEffect(() => {
+//             Dimensions.addEventListener("change", onChange);
+//             return () => {
+//                 ç√√.removeEventListener("change", onChange);
+//             };
+//         });
+//     */
 
-    if (loading.recoverInitState === LoadingStatus.LOADING
-        || loading.recoverInitState === LoadingStatus.INIT) {
-        return <RecoveringFromStorageImage />
-    } else {
-        return (
-            <CompanySelect />
-        );
-    }
-}
+//     if (loading.recoverInitState === LoadingStatus.LOADING
+//         || loading.recoverInitState === LoadingStatus.INIT) {
+//         return <RecoveringFromStorageImage />
+//     } else {
+//         return (
+//             <CompanySelect />
+//         );
+//     }
+// }
 
 /*
 

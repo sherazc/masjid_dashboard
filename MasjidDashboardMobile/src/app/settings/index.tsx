@@ -12,12 +12,13 @@ import { ConstantsStyles } from "@/src/services/Constants";
 import Reset from "@/src/images/Reset";
 import { Checkbox } from "@/src/components/Checkbox";
 import { useTypedSelector } from "@/src/store/rootReducer";
+import { useRouter } from "expo-router";
 
 interface Props {
 }
 
 const Settings: React.FC<Props> = () => {
-
+    const router = useRouter();
     const companyData = useTypedSelector(state => state.companyData);
     const settingStore = useTypedSelector(state => state.setting);
     const [setting, setSetting] = useState(createDefaultSettingData());
@@ -28,18 +29,21 @@ const Settings: React.FC<Props> = () => {
     }, [settingStore]);
 
     const onResetMasjid = () => {
-        storeDeleteCompanyData();
+        // TODO: Make this work
+        // storeDeleteCompanyData();
 
-        // Keeping the existing setting flags. But removing company ID.
+        // // Keeping the existing setting flags. But removing company ID.
         const resetSettingData = {
             ...settingStore,
             companyNotification: createDefaultSettingData().companyNotification
         };
         storeDispatchSetting(resetSettingData);
-        navigation.navigate("CompanySelect");
         removeNotificationsAsync().then(result =>
             console.log("On reset masjid. Removed notifications.", result));
         destroyTrackerInterval("CompanyDataInterval", companyData.tracker);
+
+        router.dismissAll();
+        router.replace("/");
     }
 
     const onCheckAzan = () => {
