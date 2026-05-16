@@ -34,8 +34,6 @@ run `script-start-simulator.sh`
 
 `npm install`
 
-`npm run start`
+`npx expo run:ios`
 
-`npm run ios`
-
-`npm run android`
+`npx expo run:android`
