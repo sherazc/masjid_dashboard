@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { ConstantsStyles } from '../services/Constants';
-import { Brand } from './CompanySelect/Brand';
+import { Brand } from './company/Brand';
 
 interface Props {
 }

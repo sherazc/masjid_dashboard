@@ -7,14 +7,14 @@ import { Info } from '../../images/Info';
 import { LoadingStatus } from "mdb-core-js";
 import { beginCompanyListDataInterval, destroyTrackerInterval, recoverAppFromStorage } from "../../services/AppService";
 
-import { Brand } from "@/src/components/CompanySelect/Brand";
-import { CompanyList } from "@/src/components/CompanySelect/CompanyList";
+import { Brand } from "@/src/components/company/Brand";
+import { CompanyList } from "@/src/components/company/CompanyList";
 import { Link } from "expo-router";
 
 interface Props {
 }
 
-export const CompanySelect: React.FC<Props> = () => {
+const CompanySelect: React.FC<Props> = () => {
     const companyListData = useTypedSelector(state => state.companyListData);
     const loading = useTypedSelector(state => state.loading);
 
@@ -81,6 +81,8 @@ export const CompanySelect: React.FC<Props> = () => {
         </View>
     );
 }
+
+export default CompanySelect;
 
 const styles = StyleSheet.create({
     container: {

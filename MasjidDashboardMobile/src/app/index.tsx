@@ -3,7 +3,7 @@ import { useTypedSelector } from "../store/rootReducer";
 import { recoverAppFromStorage } from "../services/AppService";
 import { LoadingStatus } from "mdb-core-js";
 import { RecoveringFromStorageImage } from "../components/RecoveringFromStorageImage";
-import { CompanySelect } from "./company/CompanySelect";
+import CompanySelect from "./company/company-select";
 
 export default function Index() {
   const loading = useTypedSelector(state => state.loading);

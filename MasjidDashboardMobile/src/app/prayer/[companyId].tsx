@@ -10,8 +10,8 @@ import { storeDispatchCompanyData } from "../../store/ReduxStoreService";
 import { useTypedSelector } from "../../store/rootReducer";
 import { createEmptyPrayerTimeSummaryMessage, PrayerTimeSummaryMessage } from "../../types/react-types";
 import { Loading } from '@/src/components/Loading';
-import { TodaysDetail } from '@/src/components/PrayerTime/TodaysDetail';
-import { PrayerTimeGrid } from '@/src/components/PrayerTime/PrayerTimeGrid';
+import { TodaysDetail } from '@/src/components/prayer/TodaysDetail';
+import { PrayerTimeGrid } from '@/src/components/prayer/PrayerTimeGrid';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 
 interface Props { }
@@ -107,7 +107,7 @@ const PrayerTime: React.FC<Props> = ({ }) => {
     // Navigate to CompanySelect because there is no selected company
     useEffect(() => {
         if (!companyData || !companyData.company || !companyData.company.id) {
-            router.push("/company/CompanySelect");
+            router.push("/company/company-select");
         }
     }, [companyData]);
 
