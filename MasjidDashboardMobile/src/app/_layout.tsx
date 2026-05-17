@@ -35,6 +35,9 @@ export default function RootLayout() {
             headerShown: true,
             headerBackTitle: "Back"
           }} />
+        <Stack.Screen
+          name="company/company-select"
+          options={{ headerShown: false }} />
       </Stack>
     </Provider>
   );

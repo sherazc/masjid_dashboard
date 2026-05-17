@@ -3,21 +3,31 @@ import { useTypedSelector } from "../store/rootReducer";
 import { recoverAppFromStorage } from "../services/AppService";
 import { LoadingStatus } from "mdb-core-js";
 import { RecoveringFromStorageImage } from "../components/RecoveringFromStorageImage";
-import CompanySelect from "./company/company-select";
+import { useRouter } from "expo-router";
 
 export default function Index() {
+  const router = useRouter();
   const loading = useTypedSelector(state => state.loading);
+  const companyData = useTypedSelector(state => state.companyData);
 
   useEffect(() => {
     recoverAppFromStorage();
   }, []);
 
-  if (loading.recoverInitState === LoadingStatus.LOADING
-          || loading.recoverInitState === LoadingStatus.INIT) {
-          return <RecoveringFromStorageImage />
-      } else {
-          return <CompanySelect />;
+  useEffect(() => {
+    if (loading.recoverInitState === LoadingStatus.COMPLETE) {
+      if (companyData.company && companyData.company.id) {
+        router.push(`/prayer/${ companyData.company.id}`);
+      } 
+      else {
+        router.push(`/company/company-select`);
       }
+    } else if (loading.recoverInitState === LoadingStatus.FAILED) {
+      router.push(`/company/company-select`);
+    }
+  }, [loading]);
+
+  return <RecoveringFromStorageImage />;
 };
 
 

@@ -18,30 +18,6 @@ const CompanySelect: React.FC<Props> = () => {
     const companyListData = useTypedSelector(state => state.companyListData);
     const loading = useTypedSelector(state => state.loading);
 
-    useEffect(() => {
-        recoverAppFromStorage();
-    }, []);
-
-    // Navigate to PrayerTime because there is a selected company.
-    // useEffect(() => {
-    //     const unsubscribe = navigation.addListener('focus', () => {
-    //         if (companyData.company && companyData.company.id) {
-    //             navigation.navigate("PrayerTime", {});
-    //         }
-    //     });
-    //     return unsubscribe;
-    // }, [navigation, companyData]);
-
-    useEffect(() => {
-        if (loading.recoverInitState === LoadingStatus.COMPLETE || loading.recoverInitState === LoadingStatus.FAILED) {
-            beginCompanyListDataInterval(companyListData);
-        }
-
-        return () => {
-            destroyTrackerInterval("CompanyListDataInterval", companyListData.tracker);
-        }
-    }, [loading])
-
     return (
         <View style={styles.container}>
             <View style={styles.background}>
