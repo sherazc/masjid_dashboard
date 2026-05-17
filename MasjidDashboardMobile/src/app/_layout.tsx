@@ -12,21 +12,29 @@ export default function RootLayout() {
           headerStyle: { backgroundColor: ConstantsStyles.color.background2 },
           headerTintColor: ConstantsStyles.text.colorLight,
         }}>
-        <Stack.Screen 
-          name="index" 
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen 
-          name="prayer/[companyId]" 
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen 
+
+        <Stack.Screen
+          name="index"
+          options={{ headerShown: false }} />
+
+        <Stack.Screen
+          name="prayer/[companyId]"
+          options={{ headerShown: false }} />
+
+        <Stack.Screen
           name="settings"
-          options={{ 
+          options={{
             title: "Settings",
-            headerShown: true 
-          }}
-        />
+            headerShown: true
+          }} />
+
+        <Stack.Screen
+          name="company/register-info"
+          options={{
+            title: "Register",
+            headerShown: true,
+            headerBackTitle: "Back"
+          }} />
       </Stack>
     </Provider>
   );

@@ -17,7 +17,7 @@ interface Props {
 export const CompanySelect: React.FC<Props> = () => {
     const companyListData = useTypedSelector(state => state.companyListData);
     const loading = useTypedSelector(state => state.loading);
-    
+
     useEffect(() => {
         recoverAppFromStorage();
     }, []);
@@ -31,12 +31,12 @@ export const CompanySelect: React.FC<Props> = () => {
     //     });
     //     return unsubscribe;
     // }, [navigation, companyData]);
-    
+
     useEffect(() => {
         if (loading.recoverInitState === LoadingStatus.COMPLETE || loading.recoverInitState === LoadingStatus.FAILED) {
             beginCompanyListDataInterval(companyListData);
         }
-        
+
         return () => {
             destroyTrackerInterval("CompanyListDataInterval", companyListData.tracker);
         }
@@ -58,25 +58,25 @@ export const CompanySelect: React.FC<Props> = () => {
                     height: "8%",
                     alignItems: "center", justifyContent: "center",
                 }}>
-                    <Link href="/common/RegisterInfo">
-                    <View
-                        // onPress={() => { navigation.navigate("RegisterInfo", {backScreenName: "Masjid"}) }}
-                        style={{
-                        flexDirection: "row",alignItems: "center", justifyContent: "center",
-                        backgroundColor: ConstantsStyles.color.background2,
-                        borderRadius: 5,
-                        width: 320, padding: 5,
-                        }}>
-                        <View style={{marginRight: 5}}>
-                            <Info height={15} width={15} fill={ConstantsStyles.text.colorLight}></Info>
+                    <Link href="/company/register-info">
+                        <View
+                            // onPress={() => { navigation.navigate("RegisterInfo", {backScreenName: "Masjid"}) }}
+                            style={{
+                                flexDirection: "row", alignItems: "center", justifyContent: "center",
+                                backgroundColor: ConstantsStyles.color.background2,
+                                borderRadius: 5,
+                                width: 320, padding: 5,
+                            }}>
+                            <View style={{ marginRight: 5 }}>
+                                <Info height={15} width={15} fill={ConstantsStyles.text.colorLight}></Info>
+                            </View>
+                            <Text style={{ fontSize: 15, color: ConstantsStyles.text.colorLight }}>
+                                Become part of Masjid Dashboard
+                            </Text>
                         </View>
-                        <Text style={{fontSize: 15, color: ConstantsStyles.text.colorLight}}>
-                            Become part of Masjid Dashboard
-                        </Text>
-                    </View>
                     </Link>
                 </View>
-                
+
             </View>
         </View>
     );
