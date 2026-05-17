@@ -29,10 +29,7 @@ const Settings: React.FC<Props> = () => {
     }, [settingStore]);
 
     const onResetMasjid = () => {
-        // TODO: Make this work
-        // storeDeleteCompanyData();
-
-        // // Keeping the existing setting flags. But removing company ID.
+        // Keeping the existing setting flags. But removing company ID.
         const resetSettingData = {
             ...settingStore,
             companyNotification: createDefaultSettingData().companyNotification
@@ -44,6 +41,9 @@ const Settings: React.FC<Props> = () => {
 
         router.dismissAll();
         router.replace("/");
+        // Defer deletion so navigation completes before PrayerTime's companyData
+        // useEffect fires and attempts a conflicting router.push.
+        setTimeout(() => storeDeleteCompanyData(), 0);
     }
 
     const onCheckAzan = () => {
