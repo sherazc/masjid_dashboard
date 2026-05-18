@@ -1,11 +1,9 @@
 import React, { useEffect } from "react";
-import { Image, StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { Image, StyleSheet, View, Text } from "react-native";
 import { useTypedSelector } from '../../store/rootReducer';
 
 import { ConstantsStyles } from "../../services/Constants";
 import { Info } from '../../images/Info';
-import { LoadingStatus } from "mdb-core-js";
-import { beginCompanyListDataInterval, destroyTrackerInterval, recoverAppFromStorage } from "../../services/AppService";
 
 import { Brand } from "@/src/components/company/Brand";
 import { CompanyList } from "@/src/components/company/CompanyList";

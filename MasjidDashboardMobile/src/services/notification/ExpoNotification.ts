@@ -28,10 +28,8 @@ export const expoRemoveNotificationsAsync = () => {
     return Promise.all(promises);
 }
 
-
 // Returns notification identifier 
 export const expoScheduleNotificationAsync = async (scheduleNotification: ScheduleNotification): Promise<string> => {
-
     // TODO try to find what happens if same id is passed for multiple schedule notification
     return await Notifications.scheduleNotificationAsync({
         content: {
@@ -39,7 +37,14 @@ export const expoScheduleNotificationAsync = async (scheduleNotification: Schedu
             body: scheduleNotification.message
         },
         // trigger: { seconds: 10 },
-        trigger: scheduleNotification.date
+        trigger: {
+            year: scheduleNotification.date.getFullYear(),
+            month: scheduleNotification.date.getMonth(),
+            day: scheduleNotification.date.getDate(),
+            hour: scheduleNotification.date.getHours(),
+            minute: scheduleNotification.date.getMinutes(),
+            seconds: scheduleNotification.date.getSeconds(),
+        } as Notifications.CalendarTriggerInput
     });
 }
 

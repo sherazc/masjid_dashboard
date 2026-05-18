@@ -76,7 +76,7 @@ const setupNotification = (settingChanged: boolean, setting: SettingData,
         return;
     }
 
-    if (!sameCompany) {
+    if (!sameCompany && companyData.company) {
         setting.companyNotification.companyId = companyData.company.id;
     }
 
@@ -177,6 +177,10 @@ const calculatePossibleNotificationDays = (setting: SettingData, maxNotification
 
 
 const getUpcomingPrayers = (now: Date, prayerMonths: PrayersMonth[], daysCount: number): PrayersDay[] => {
+    if (!prayerMonths || prayerMonths.length < 1) {
+        return [];
+    }
+
     const allPrayers: PrayersDay[] = [];
     // Current year prayer
     prayerMonths

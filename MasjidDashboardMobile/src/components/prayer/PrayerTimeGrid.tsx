@@ -97,7 +97,7 @@ export const PrayerTimeGrid: React.FC<Props> = ({companyData, prayer, prayerTime
                     <Text style={{ ...styles.prayerAzan, }}>{time24To12(prayer.maghrib)}</Text>
                 </View>
                 <View style={{ ...styles.cell, ...styles.column3, flex: 3.2 }}>
-                    <Text style={{ ...styles.prayerIqama, fontSize: 12}}>
+                    <Text style={{ ...styles.prayerIqama, fontSize: 15}}>
                         {findConfigurationByName(companyData.configurations, ConfigurationKey.MAGHRIB_IQAMA)}
                     </Text>
                 </View>
@@ -149,10 +149,10 @@ const styles = StyleSheet.create({
     rowHeading: { backgroundColor: primaryColor, color: ConstantsStyles.text.colorLight, borderTopLeftRadius: 5, borderTopRightRadius: 5 },
     rowInactive: { backgroundColor: ConstantsStyles.color.background4 },
     rowActive: { backgroundColor: "#d1e9f6" },
-    prayerName: { fontSize: 12, color: primaryColor, fontWeight: "bold" },
-    prayerAzan: { fontSize: 15, color: ConstantsStyles.text.colorDark },
-    prayerIqama: { fontSize: 15, color: ConstantsStyles.text.colorDark },
-    prayerNextChange: { fontSize: 10, textAlign: "center", color: ConstantsStyles.text.colorDark },
+    prayerName: { fontSize: 15, color: primaryColor, fontWeight: "bold" },
+    prayerAzan: { fontSize: 20, color: ConstantsStyles.text.colorDark },
+    prayerIqama: { fontSize: 20, color: ConstantsStyles.text.colorDark },
+    prayerNextChange: { fontSize: 12, textAlign: "center", color: ConstantsStyles.text.colorDark },
     prayerAzanHeading: { fontSize: 15, color: ConstantsStyles.text.colorLight, fontWeight: "bold" },
     prayerIqamaHeading: { fontSize: 15, color: ConstantsStyles.text.colorLight, fontWeight: "bold" },
     prayerNextChangeHeading: { color: ConstantsStyles.text.colorLight, fontSize: 10, textAlign: "center", fontWeight: "bold" }
