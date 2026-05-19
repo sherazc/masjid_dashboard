@@ -40,7 +40,7 @@ const Settings: React.FC<Props> = () => {
         destroyTrackerInterval("CompanyDataInterval", companyData.tracker);
 
         router.dismissAll();
-        router.replace("/");
+        router.replace("/company/company-select");
         // Defer deletion so navigation completes before PrayerTime's companyData
         // useEffect fires and attempts a conflicting router.push.
         setTimeout(() => storeDeleteCompanyData(), 0);

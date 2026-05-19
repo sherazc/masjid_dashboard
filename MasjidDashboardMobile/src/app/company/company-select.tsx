@@ -8,6 +8,8 @@ import { Info } from '../../images/Info';
 import { Brand } from "@/src/components/company/Brand";
 import { CompanyList } from "@/src/components/company/CompanyList";
 import { Link } from "expo-router";
+import { LoadingStatus } from "mdb-core-js";
+import { beginCompanyListDataInterval, destroyTrackerInterval } from "@/src/services/AppService";
 
 interface Props {
 }
@@ -15,6 +17,17 @@ interface Props {
 const CompanySelect: React.FC<Props> = () => {
     const companyListData = useTypedSelector(state => state.companyListData);
     const loading = useTypedSelector(state => state.loading);
+
+
+    useEffect(() => {
+        if (loading.recoverInitState === LoadingStatus.COMPLETE || loading.recoverInitState === LoadingStatus.FAILED) {
+            beginCompanyListDataInterval(companyListData);
+        }
+
+        return () => {
+            destroyTrackerInterval("CompanyListDataInterval", companyListData.tracker);
+        }
+    }, [loading])
 
     return (
         <View style={styles.container}>
