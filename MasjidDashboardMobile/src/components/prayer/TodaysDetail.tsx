@@ -149,9 +149,10 @@ const styles = StyleSheet.create({
     },
     // Container for Jammat and Jummah
     jammatView: {
-        flexGrow: 1,
+        width: "60%",
         alignItems: "center",
         justifyContent: "center",
+        paddingHorizontal: 5,
         // backgroundColor: "blue"
     },
     heading: {

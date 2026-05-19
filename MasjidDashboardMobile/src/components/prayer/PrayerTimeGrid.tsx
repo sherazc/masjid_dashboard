@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { dateToDisplayDateShort, time24To12 } from "mdb-core-js";
+import { dateToDisplayDateLong, dateToDisplayDateShort, hijriStringToDisplayDateLong, time24To12 } from "mdb-core-js";
 import { PrayersDay, PrayerTimeSummary, CompanyData } from "mdb-core-js";
 import { PrayerTimeSummaryMessage } from '../../types/react-types';
 import { findConfigurationByName } from "mdb-core-js";
@@ -12,9 +12,40 @@ interface Props {
     companyData: CompanyData;
 }
 
-export const PrayerTimeGrid: React.FC<Props> = ({companyData, prayer, prayerTimeMessage }) => {
+export const PrayerTimeGrid: React.FC<Props> = ({ companyData, prayer, prayerTimeMessage }) => {
     return (
+<View>
+
+<View style={{
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: 15,
+            }}>
+                <Text style={{ color: ConstantsStyles.text.colorLight, fontSize: 20 }}>
+                    {dateToDisplayDateLong(new Date())}
+                </Text>
+            </View>
+
+            {companyData.prayer && companyData.prayer.hijriString && (
+
+                <View style={{
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginBottom: 15
+                }}>
+                    <Text style={{ color: ConstantsStyles.text.colorLight, fontSize: 20 }}>
+                        {hijriStringToDisplayDateLong(companyData.prayer.hijriString)}
+                    </Text>
+
+                </View>
+            )}
+
+
+
         <View style={styles.mainBox}>
+
+            
+
             <View style={{ ...styles.row, ...styles.rowHeading }}>
                 <View style={{ ...styles.cell, ...styles.column1 }}></View>
                 <View style={{ ...styles.cell, ...styles.column2 }}>
@@ -97,7 +128,7 @@ export const PrayerTimeGrid: React.FC<Props> = ({companyData, prayer, prayerTime
                     <Text style={{ ...styles.prayerAzan, }}>{time24To12(prayer.maghrib)}</Text>
                 </View>
                 <View style={{ ...styles.cell, ...styles.column3, flex: 3.2 }}>
-                    <Text style={{ ...styles.prayerIqama, fontSize: 15}}>
+                    <Text style={{ ...styles.prayerIqama, fontSize: 15 }}>
                         {findConfigurationByName(companyData.configurations, ConfigurationKey.MAGHRIB_IQAMA)}
                     </Text>
                 </View>
@@ -125,11 +156,12 @@ export const PrayerTimeGrid: React.FC<Props> = ({companyData, prayer, prayerTime
 
 
         </View>
+        </View>
     );
 }
 
 const primaryColor = ConstantsStyles.color.background2;
-const borderColor =   primaryColor;
+const borderColor = primaryColor;
 
 const styles = StyleSheet.create({
     mainBox: {
@@ -149,10 +181,10 @@ const styles = StyleSheet.create({
     rowHeading: { backgroundColor: primaryColor, color: ConstantsStyles.text.colorLight, borderTopLeftRadius: 5, borderTopRightRadius: 5 },
     rowInactive: { backgroundColor: ConstantsStyles.color.background4 },
     rowActive: { backgroundColor: "#d1e9f6" },
-    prayerName: { fontSize: 15, color: primaryColor, fontWeight: "bold" },
+    prayerName: { fontSize: 12, color: primaryColor, fontWeight: "bold" },
     prayerAzan: { fontSize: 20, color: ConstantsStyles.text.colorDark },
     prayerIqama: { fontSize: 20, color: ConstantsStyles.text.colorDark },
-    prayerNextChange: { fontSize: 12, textAlign: "center", color: ConstantsStyles.text.colorDark },
+    prayerNextChange: { fontSize: 10, textAlign: "center", color: ConstantsStyles.text.colorDark },
     prayerAzanHeading: { fontSize: 15, color: ConstantsStyles.text.colorLight, fontWeight: "bold" },
     prayerIqamaHeading: { fontSize: 15, color: ConstantsStyles.text.colorLight, fontWeight: "bold" },
     prayerNextChangeHeading: { color: ConstantsStyles.text.colorLight, fontSize: 10, textAlign: "center", fontWeight: "bold" }
