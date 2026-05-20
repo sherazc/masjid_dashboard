@@ -80,8 +80,10 @@ export const beginCompanyDataInterval = (companyData: CompanyData) => {
 export const restartCompanyDataInterval = (companyData: CompanyData) => {
     console.log("restartCompanyDataInterval");
     const companyDataResetTracker:CompanyData = {...companyData};
-    companyDataResetTracker.tracker.expirableVersion.version = -1
-    companyDataResetTracker.tracker.expirableVersion.expirationDate = undefined;
+    if (companyDataResetTracker.tracker?.expirableVersion) {
+        companyDataResetTracker.tracker.expirableVersion.version = -1;
+        companyDataResetTracker.tracker.expirableVersion.expirationDate = undefined;
+    }
     storeDispatchCompanyData(companyDataResetTracker);
     beginCompanyDataInterval(companyDataResetTracker);
 }

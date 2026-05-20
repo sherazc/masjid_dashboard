@@ -1,5 +1,5 @@
 import {Company, PrayersDay, ScheduleNotification, SettingData} from "mdb-core-js";
-import {addMinutesTo24hTime, TIME_24_REGX} from "mdb-core-js";
+import {addMinutesTo24hTime, REGX_TIME_24} from "mdb-core-js";
 import {Constants} from "../Constants";
 import {expoScheduleNotificationAsync} from "./ExpoNotification";
 
@@ -29,7 +29,7 @@ export const setupPrayerNotificationAsync = async (company: (Company | undefined
     let title: string;
     let message: string;
     let notification: (ScheduleNotification | undefined);
-    let time: string;
+    let time: string | undefined;
 
     // AZAN
     if (setting.azanAlert) {
@@ -143,7 +143,7 @@ export const setupPrayerNotificationAsync = async (company: (Company | undefined
 
 
 const createNotification = (title: string, message: string, now: Date, prayerDate: Date, time: string): (ScheduleNotification | undefined) => {
-    if (!TIME_24_REGX.test(time)) {
+    if (!REGX_TIME_24.test(time)) {
         return;
     }
 

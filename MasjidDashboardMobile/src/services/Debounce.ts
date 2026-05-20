@@ -1,6 +1,6 @@
 // Use it when there is no return
 export const debounce = (func: Function, delay = 1000) => {
-    let timeoutId: NodeJS.Timeout;
+    let timeoutId: number | NodeJS.Timeout;
     return function (...args: any[]) {
         clearTimeout(timeoutId)
 
@@ -12,7 +12,7 @@ export const debounce = (func: Function, delay = 1000) => {
 
 // Use it when need to return value
 export const debouncePromise = (inner: Function, ms: number = 1000) => {
-    let timer: NodeJS.Timeout;
+    let timer: number | NodeJS.Timeout;
     let resolves: any = [];
 
     return function (...args: any[]) {

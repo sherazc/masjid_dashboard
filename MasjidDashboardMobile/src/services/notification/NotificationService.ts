@@ -176,7 +176,7 @@ const calculatePossibleNotificationDays = (setting: SettingData, maxNotification
 }
 
 
-const getUpcomingPrayers = (now: Date, prayerMonths: PrayersMonth[], daysCount: number): PrayersDay[] => {
+const getUpcomingPrayers = (now: Date, prayerMonths: PrayersMonth[] | undefined, daysCount: number): PrayersDay[] => {
     if (!prayerMonths || prayerMonths.length < 1) {
         return [];
     }
