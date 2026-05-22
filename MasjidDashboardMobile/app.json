@@ -7,6 +7,7 @@
     "icon": "./assets/images/icon.png",
     "scheme": "masjiddashboardmobile",
     "userInterfaceStyle": "automatic",
+    "backgroundColor": "#0c274b",
     "ios": {
       "icon": "./assets/expo.icon",
       "bundleIdentifier": "com.sherazc.MasjidDashboardMobile"
@@ -18,7 +19,8 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.sherazc.MasjidDashboardMobile"
     },
     "web": {
       "output": "static",
