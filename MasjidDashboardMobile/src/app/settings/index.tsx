@@ -8,10 +8,10 @@ import {
     removeNotificationsAsync,
     setupNotificationOnSettingChangedHandler,
 } from "../../services/notification/NotificationService";
-import { ConstantsStyles } from "@/src/services/Constants";
-import Reset from "@/src/images/Reset";
-import { Checkbox } from "@/src/components/Checkbox";
-import { useTypedSelector } from "@/src/store/rootReducer";
+import { ConstantsStyles } from "@/services/Constants";
+import Reset from "@/images/Reset";
+import { Checkbox } from "@/components/Checkbox";
+import { useTypedSelector } from "@/store/rootReducer";
 import { useRouter } from "expo-router";
 
 interface Props {

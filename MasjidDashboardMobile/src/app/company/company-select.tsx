@@ -8,8 +8,9 @@ import { Info } from '../../images/Info';
 import { CompanyList } from "@/components/company/CompanyList";
 import { Link } from "expo-router";
 import { beginCompanyListDataInterval, destroyTrackerInterval } from "@/services/AppService";
-import { LoadingStatus } from "mdb-core-js";
+
 import { Brand } from "@/components/company/Brand";
+import { LoadingStatus } from "mdb-core-js";
 
 interface Props {
 }

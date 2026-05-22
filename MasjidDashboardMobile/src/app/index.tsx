@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useTypedSelector } from "../store/rootReducer";
 import { recoverAppFromStorage } from "../services/AppService";
-import { LoadingStatus } from "mdb-core-js";
 import { RecoveringFromStorageImage } from "../components/RecoveringFromStorageImage";
 import { useRouter } from "expo-router";
+import { LoadingStatus } from "mdb-core-js";
 
 export default function Index() {
   const router = useRouter();

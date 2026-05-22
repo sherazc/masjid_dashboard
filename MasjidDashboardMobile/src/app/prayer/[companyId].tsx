@@ -1,5 +1,4 @@
-import { processPrayerTimeMessage } from '@/src/services-react/PrayerTimeMessageProcessor';
-import { StackNavigationProp } from '@react-navigation/stack';
+import { processPrayerTimeMessage } from '@/services-react/PrayerTimeMessageProcessor';
 import { Company, CompanyData, PrayersDay } from "mdb-core-js";
 import React, { useEffect, useState } from "react";
 import { BackHandler, Image, Platform, StyleSheet, Text, View } from "react-native";
@@ -9,9 +8,9 @@ import { processPrayerTime } from "../../services/PrayerTimeProcessor";
 import { storeDispatchCompanyData } from "../../store/ReduxStoreService";
 import { useTypedSelector } from "../../store/rootReducer";
 import { createEmptyPrayerTimeSummaryMessage, PrayerTimeSummaryMessage } from "../../types/react-types";
-import { Loading } from '@/src/components/Loading';
-import { TodaysDetail } from '@/src/components/prayer/TodaysDetail';
-import { PrayerTimeGrid } from '@/src/components/prayer/PrayerTimeGrid';
+import { Loading } from '@/components/Loading';
+import { TodaysDetail } from '@/components/prayer/TodaysDetail';
+import { PrayerTimeGrid } from '@/components/prayer/PrayerTimeGrid';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 
 interface Props { }
