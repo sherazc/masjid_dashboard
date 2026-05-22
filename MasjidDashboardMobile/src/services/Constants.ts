@@ -45,13 +45,15 @@ export const ConstantsStyles = {
         shadowColor: '#999',
         shadowOffset: { width: 2, height: 2 },
         shadowOpacity: 0.75,
-        shadowRadius: 2
+        shadowRadius: 2,
+        elevation: 2 // Shadow do not work in android until I add elevation.
     },
     shadowSmallDark: {
         shadowColor: '#333',
         shadowOffset: { width: 2, height: 2 },
         shadowOpacity: 0.75,
-        shadowRadius: 2
+        shadowRadius: 2,
+        elevation: 2
     },
     shadowSmallText: {
         textShadowColor: 'rgba(150, 150, 150, 0.75)',
