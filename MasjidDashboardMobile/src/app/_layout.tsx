@@ -25,7 +25,8 @@ export default function RootLayout() {
           name="settings"
           options={{
             title: "Settings",
-            headerShown: true
+            headerShown: true,
+            headerBackTitle: "Back"
           }} />
 
         <Stack.Screen
