@@ -7,7 +7,7 @@ import Sunrise from "../../images/Sunrise";
 import Underline from "../../images/Underline";
 import { ConfigurationKey, ConstantsStyles } from "../../services/Constants";
 import { dateToTime12h } from "mdb-core-js";
-import { findConfigurationByName, trimEllipsis } from "mdb-core-js";
+import { findConfigurationByName } from "mdb-core-js";
 import { PrayerTimeSummaryMessage } from "../../types/react-types";
 import { CompanyData } from "mdb-core-js";
 import Refresh from "../../images/Refresh";
@@ -66,7 +66,7 @@ export const TodaysDetail: React.FC<Props> = ({ prayerTimeMessage, companyData})
 const getCompanyName = (companyData: CompanyData) => {
     let result = "";
     if (companyData && companyData.company && companyData.company.name) {
-        result = trimEllipsis(companyData.company.name, 18);
+        result = companyData.company.name;
     }
     return result;
 }
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
     },
     companyNameView: {
-        flexGrow: 1,
+        flex: 1,
         alignItems: "center",
         justifyContent: "center",
     },
@@ -110,6 +110,7 @@ const styles = StyleSheet.create({
         fontSize: 25,
         color: ConstantsStyles.text.colorLight,
         marginTop: 10,
+        textAlign: "center",
     },
     settingView: {
         flexBasis: 50,
