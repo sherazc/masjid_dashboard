@@ -9,7 +9,6 @@
     "userInterfaceStyle": "automatic",
     "backgroundColor": "#0c274b",
     "ios": {
-      "icon": "./assets/expo.icon",
       "bundleIdentifier": "com.sherazc.MasjidDashboardMobile"
     },
     "android": {
