@@ -12,7 +12,6 @@ npx expo run:android
 ## Add Libraries
 ```bash
 npx expo install @react-native-async-storage/async-storage
-npx expo install @react-native-async-storage/async-storage
 npx expo install expo-notifications
 npx expo install react-native-svg
 npx expo install react-redux
