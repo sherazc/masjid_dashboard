@@ -65,6 +65,8 @@ Set ANDROID_HOME in `.bash_profile` and `.zprofile`. I have set it in sheraz_pro
 
 `export ANDROID_HOME=/Users/sheraz/Library/Android/sdk`
 
+Add `$ANDROID_HOME/platform-tools` to `$PATH`
+
 `script-clean-all.sh`: Use this script to clean all the cache
 
 ## AVD
@@ -98,3 +100,32 @@ run `script-start-simulator.sh`
 `npx expo run:ios`
 
 `npx expo run:android`
+
+
+## Samsung S25
+
+### Enable Developer Options
+
+Settings > About phone > Software information and tap Build number 7 times.
+
+### Enable USB Debugging
+
+Settings -> Developer options -> USB debugging checkbox
+
+### Connect Mac
+
+Connect phone to Mac with USB cable. Click enable on both Mac and phone
+
+Run this command and verify phone is available in the list:
+
+```
+sheraz@scmac16 ~ % adb devices
+List of devices     attached
+R3CY50L27XN	        device
+```
+
+`adb` command is available under `$ANDROID_HOME/platform-tools`
+
+### Run on Samsung S25
+
+`npm run android`
