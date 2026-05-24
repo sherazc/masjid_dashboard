@@ -1,8 +1,9 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, { useState } from 'react';
+import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
 import Logo from '../../images/Logo';
 import Underline from '../../images/Underline';
 import {ConstantsStyles} from '../../services/Constants';
+import { testRemoveAllNotifications, testScheduleNotification } from '@/misc/TestNotification';
 
 // import { testRemoveAllNotifications, testScheduleNotification } from '../../misc/TestNotification';
 
@@ -10,7 +11,7 @@ interface Props {
 }
 
 export const Brand: React.FC<Props> = () => {
-    /*
+    
         const [testNotificationDelaySeconds, setTestNotificationDelaySeconds] = useState<number>(0);
         const showNotification = () => {
             console.log("Showing sample notification");
@@ -21,7 +22,7 @@ export const Brand: React.FC<Props> = () => {
             console.log("Removing Notifications...")
             testRemoveAllNotifications();
         }
-    */
+    
 
     return (
         <View style={styles.container}>
@@ -30,7 +31,6 @@ export const Brand: React.FC<Props> = () => {
             <View style={{marginTop: 20}}>
                 <Logo width="100" height="100"/>
             </View>
-            {/*
             <TextInput
                 keyboardType='number-pad'
                 style={{ height: 40, backgroundColor: "#fff"}}
@@ -39,7 +39,7 @@ export const Brand: React.FC<Props> = () => {
             />
             <Button onPress={showNotification} title="Notification" />
             <Button onPress={removeNotifications} title="Remove All Notifications" />
-*/}
+
         </View>
     );
 }
