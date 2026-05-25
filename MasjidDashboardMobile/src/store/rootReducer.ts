@@ -4,6 +4,7 @@ import companyListDataReducer, {CompanyListActionTypes} from './CompanyListDataR
 import loadingReducer, { LoadingActionTypes } from './LoadingReducer';
 import companyDataReducer, { CompanyDataActionTypes } from './CompanyDataReducer';
 import settingReducer, { SettingActionTypes } from './SettingReducer';
+import testModeReducer, { TestModeActionTypes } from './TestModeReducer';
 
 const INITIAL_STATE = {};
 
@@ -11,10 +12,16 @@ const rootReducer = combineReducers({
   companyListData: companyListDataReducer,
   companyData: companyDataReducer,
   loading: loadingReducer,
-  setting: settingReducer
+  setting: settingReducer,
+  testMode: testModeReducer
 });
 
-export type RootActionType = CompanyListActionTypes | CompanyDataActionTypes | LoadingActionTypes | SettingActionTypes;
+export type RootActionType = CompanyListActionTypes 
+    | CompanyDataActionTypes 
+    | LoadingActionTypes 
+    | SettingActionTypes
+    | TestModeActionTypes;
+
 export type RootState = ReturnType<typeof rootReducer>
 
 export const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;

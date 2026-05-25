@@ -5,7 +5,7 @@ import {Alert, Platform} from 'react-native';
 
 Notifications.setNotificationHandler({
     handleNotification: async () => ({
-        shouldShowAlert: true,
+        // shouldShowAlert: true, // Deprecated
         shouldPlaySound: true,
         shouldSetBadge: true,
         shouldShowBanner: true,
