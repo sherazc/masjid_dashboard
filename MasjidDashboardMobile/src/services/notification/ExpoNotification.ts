@@ -1,7 +1,17 @@
 import * as Notifications from 'expo-notifications';
 import {ScheduleNotification} from "mdb-core-js";
 import * as Device from 'expo-device';
-import {Alert} from 'react-native';
+import {Alert, Platform} from 'react-native';
+
+Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+        shouldShowAlert: true,
+        shouldPlaySound: true,
+        shouldSetBadge: true,
+        shouldShowBanner: true,
+        shouldShowList: true,
+    }),
+});
 
 export const expoRemoveNotificationsAsync = () => {
     const promises: Array<Promise<any>> = [];
@@ -34,12 +44,13 @@ export const expoScheduleNotificationAsync = async (scheduleNotification: Schedu
     return await Notifications.scheduleNotificationAsync({
         content: {
             title: scheduleNotification.title,
-            body: scheduleNotification.message
+            body: scheduleNotification.message,
+            data: { data: 'goes here' },
         },
         trigger: {
             type: Notifications.SchedulableTriggerInputTypes.DATE,
-            date: scheduleNotification.date
-        }
+            date: scheduleNotification.date,
+        } as Notifications.DateTriggerInput
     });
 }
 
@@ -61,6 +72,16 @@ export const expoRegisterForNotificationsAsync = async (): Promise<boolean> => {
     } else {
         result = true;
     }
+
+    if (Platform.OS === 'android') {
+        Notifications.setNotificationChannelAsync('default', {
+            name: 'default',
+            importance: Notifications.AndroidImportance.MAX,
+            vibrationPattern: [0, 250, 250, 250],
+            lightColor: '#FF231F7C',
+        });
+    }
+
     return result;
 };
 
