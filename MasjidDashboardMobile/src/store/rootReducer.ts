@@ -1,4 +1,4 @@
-import {createStore, combineReducers} from 'redux';
+import { legacy_createStore as createStore, combineReducers } from 'redux';
 import {useSelector, TypedUseSelectorHook, useDispatch as _useDispatch} from "react-redux"
 import companyListDataReducer, {CompanyListActionTypes} from './CompanyListDataReducer';
 import loadingReducer, { LoadingActionTypes } from './LoadingReducer';
