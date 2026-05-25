@@ -36,15 +36,10 @@ export const expoScheduleNotificationAsync = async (scheduleNotification: Schedu
             title: scheduleNotification.title,
             body: scheduleNotification.message
         },
-        // trigger: { seconds: 10 },
         trigger: {
-            year: scheduleNotification.date.getFullYear(),
-            month: scheduleNotification.date.getMonth(),
-            day: scheduleNotification.date.getDate(),
-            hour: scheduleNotification.date.getHours(),
-            minute: scheduleNotification.date.getMinutes(),
-            seconds: scheduleNotification.date.getSeconds(),
-        } as Notifications.CalendarTriggerInput
+            type: Notifications.SchedulableTriggerInputTypes.DATE,
+            date: scheduleNotification.date
+        }
     });
 }
 
