@@ -4,16 +4,12 @@ import Logo from '../../images/Logo';
 import Underline from '../../images/Underline';
 import { ConstantsStyles } from '../../services/Constants';
 import { testRemoveAllNotifications, testScheduleNotification } from '@/misc/TestNotification';
-import { useTypedSelector } from '@/store/rootReducer';
+import { TestModeButton } from '../TestModeButton';
 
 interface Props {
 }
 
 export const Brand: React.FC<Props> = () => {
-    const [testModeCounter, setTestModeCounter] = useState<number>(0);
-    const testMode = useTypedSelector(state => state.testMode);
-
-
     const [testNotificationDelaySeconds, setTestNotificationDelaySeconds] = useState<number>(0);
     const showNotification = () => {
         console.log("Showing sample notification");
@@ -25,18 +21,14 @@ export const Brand: React.FC<Props> = () => {
         testRemoveAllNotifications();
     }
 
-    const onTestMode = () => {
-        setTestModeCounter(c => c + 1);
-        console.log();
-    }
-
-
     return (
         <View style={styles.container}>
             <Text style={styles.title}>MASJID DASHBOARD</Text>
             <Underline fill={ConstantsStyles.color.lines} width={220} />
-            <View style={{ marginTop: 20 }} onTouchEnd={onTestMode}>
-                <Logo width="100" height="100" />
+            <View style={{ marginTop: 20 }}>
+                <TestModeButton>
+                    <Logo width="100" height="100" />
+                </TestModeButton>
             </View>
             <TextInput
                 keyboardType='number-pad'
@@ -46,10 +38,6 @@ export const Brand: React.FC<Props> = () => {
             />
             <Button onPress={showNotification} title="Notification" />
             <Button onPress={removeNotifications} title="Remove All Notifications" />
-
-            
-            {testMode.mode && <Button onPress={showNotification} title="Notification" />}
-
         </View>
     );
 }
