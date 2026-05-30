@@ -8,37 +8,40 @@ interface Props {
     children: React.ReactNode;
 }
 
+const DURATION = 3;
+const LIMIT = 7;
+/**
+ * Created these variable outside component because they were getting reset on returning back to the screen.
+ * Maybe because closure in interval
+ */
+let count: number = 0;
+let tempDuration = 0;
 export const TestModeButton: React.FC<Props> = ({ children }) => {
-    const DURATION = 5;
-    const LIMIT = 7;
-
-    let tempDuration = 0;
-
     const testMode = useTypedSelector(state => state.testMode);
-    let count: number = 0;
 
     const onTestMode = () => {
         count++;
+        console.log
         if (count > LIMIT) {
             tempDuration = 0;
             count = 0;
             console.log("turn on or off test mode");
             storeDispatchTestMode(!testMode.mode)
-            const message = `Test mode is ${!testMode.mode === true ? "on": "off"}.`;
+            const message = `Test mode is ${!testMode.mode === true ? "on" : "off"}.`;
             Alert.alert('Test Mode', message);
         }
-        console.log("Touched!!!", count);
+        console.log(`Touched!!! tempDuration=${tempDuration}, count ${count}`);
     }
 
     useFocusEffect(
         useCallback(() => {
             const intervalId = setInterval(() => {
-                console.log(`Interval tempDuration=${tempDuration}, count ${count}`);
                 if (count > 0) {
                     tempDuration++
                 }
 
                 if (tempDuration > DURATION) {
+                    console.log(`Duration limit reached. Resetting tempDuration=${tempDuration}, count ${count}`);
                     tempDuration = 0;
                     count = 0;
                 }
