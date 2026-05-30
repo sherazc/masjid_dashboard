@@ -12,7 +12,7 @@ import { ConstantsStyles } from "@/services/Constants";
 import Reset from "@/images/Reset";
 import { Checkbox } from "@/components/Checkbox";
 import { useTypedSelector } from "@/store/rootReducer";
-import { useRouter } from "expo-router";
+import { Link, useRouter } from "expo-router";
 
 interface Props {
 }
@@ -21,6 +21,7 @@ const Settings: React.FC<Props> = () => {
     const router = useRouter();
     const companyData = useTypedSelector(state => state.companyData);
     const settingStore = useTypedSelector(state => state.setting);
+    const testMode = useTypedSelector(state => state.testMode);
     const [setting, setSetting] = useState(createDefaultSettingData());
 
     // onload load setting from redux
@@ -62,10 +63,6 @@ const Settings: React.FC<Props> = () => {
         const newSetting = { ...setting, beforeIqamaAlert: !setting.beforeIqamaAlert };
         setSetting(newSetting);
         setupNotificationOnSettingChangedHandler(newSetting);
-    }
-
-    const onTestMode = () => {
-        console.log("Test Mode")
     }
 
     return (
@@ -131,14 +128,20 @@ const Settings: React.FC<Props> = () => {
             </TouchableOpacity>
             <View style={styles.separator} />
             {/* Test Mode */}
-            <TouchableOpacity style={styles.settingRow} onPress={onTestMode}>
-                <View style={styles.nameView}>
-                    <Text style={styles.name}>
-                        Test Mode
-                    </Text>
-                </View>
-            </TouchableOpacity>
-            <View style={styles.separator} />
+            {testMode.mode && (
+                <>
+                    <Link href="/test-mode" asChild>
+                        <TouchableOpacity style={styles.settingRow}>
+                            <View style={styles.nameView}>
+                                <Text style={styles.name}>
+                                    Test Mode
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
+                    </Link>
+                    <View style={styles.separator} />
+                </>
+            )}
         </View>
     );
 }

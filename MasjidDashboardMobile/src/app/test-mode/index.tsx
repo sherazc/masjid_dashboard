@@ -7,21 +7,6 @@ const TestModeScreen: React.FC<Props> = () => {
   return (
     <View style={styles.container}>
       <Text>Test Mode Screen</Text>
-      <Text>Test Mode Screen</Text>
-      <Text>Test Mode Screen</Text>
-      <Text>Test Mode Screen</Text>
-      <Text>Test Mode Screen</Text>
-      <Text>Test Mode Screen</Text>
-      <Text>Test Mode Screen</Text>
-      <Text>Test Mode Screen</Text>
-      <Text>Test Mode Screen</Text>
-      <Text>Test Mode Screen</Text>
-      <Text>Test Mode Screen</Text>
-      <Text>Test Mode Screen</Text>
-      <Text>Test Mode Screen</Text>
-      <Text>Test Mode Screen</Text>
-      <Text>Test Mode Screen</Text>
-      <Text>Test Mode Screen</Text>
     </View>
   );
 }

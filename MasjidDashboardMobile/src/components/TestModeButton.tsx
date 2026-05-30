@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Button, StyleSheet, View } from 'react-native';
+import { Alert, StyleSheet, View } from 'react-native';
 import { useTypedSelector } from '@/store/rootReducer';
 import { useFocusEffect } from 'expo-router';
 import { storeDispatchTestMode } from '@/store/ReduxStoreService';
@@ -24,6 +24,8 @@ export const TestModeButton: React.FC<Props> = ({ children }) => {
             count = 0;
             console.log("turn on or off test mode");
             storeDispatchTestMode(!testMode.mode)
+            const message = `Test mode is ${!testMode.mode === true ? "on": "off"}.`;
+            Alert.alert('Test Mode', message);
         }
         console.log("Touched!!!", count);
     }
@@ -54,11 +56,6 @@ export const TestModeButton: React.FC<Props> = ({ children }) => {
             <View onTouchEnd={onTestMode}>
                 {children}
             </View>
-            {testMode.mode && (
-                <View>
-                    <Button title="Notification" />
-                </View>
-            )}
         </>
     );
 }

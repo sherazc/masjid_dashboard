@@ -56,6 +56,16 @@ export default function RootLayout() {
         <Stack.Screen
           name="company/company-select"
           options={{ headerShown: false }} />
+
+
+        <Stack.Screen
+          name="test-mode/index"
+          options={{
+            title: "Test Mode",
+            headerShown: true,
+            headerBackTitle: "Back"
+          }} />
+          
       </Stack>
       </ThemeProvider>
     </Provider>
