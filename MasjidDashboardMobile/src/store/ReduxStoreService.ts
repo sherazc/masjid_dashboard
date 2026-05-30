@@ -22,14 +22,13 @@ import store from "./rootReducer";
 
 
 export const storeGetCompanyData = ():CompanyData => store.getState().companyData;
-export const storeDeleteCompanyData = () => {store.dispatch({type: "COMPANY_DATA_DELETE"})};
+export const storeDeleteCompanyData = () => store.dispatch({type: "COMPANY_DATA_DELETE"});
 export const storeDispatchCompanyData = (companyData:CompanyData) => {
     store.dispatch({
         type: "COMPANY_DATA_SET",
         payload: companyData as CompanyData
     });
-}
-
+};
 
 export const storeGetSetting = ():SettingData => store.getState().setting;
 export const storeDispatchSetting = (settingData:SettingData) => {
@@ -39,20 +38,17 @@ export const storeDispatchSetting = (settingData:SettingData) => {
     });
 }
 
-
-export const storeDispatchCompanyListData = (companyListData : CompanyListData) => {
+export const storeDispatchCompanyListData = (companyListData : CompanyListData) => 
     store.dispatch({
         type: "COMPANY_LIST_SET",
         payload: companyListData as CompanyListData
     });
-}
 
+export const storeDispatchRecoverInitComplete = () => store.dispatch(RecoverInitCompleteAction);
 
-export const storeDispatchRecoverInitComplete = () => {
-    store.dispatch(RecoverInitCompleteAction);
-}
+export const storeDispatchRecoverInitFailed = () => store.dispatch(RecoverInitFailedAction);
 
+export const storeDispatchTestMode = (testMode: boolean) => 
+    store.dispatch({type: "TEST_MODE_SET", payload: {mode: testMode}});
 
-export const storeDispatchRecoverInitFailed = () => {
-    store.dispatch(RecoverInitFailedAction);
-}
+export const storeDispatchTestModeDelete = () => store.dispatch({type: "TEST_MODE_DELETE"});

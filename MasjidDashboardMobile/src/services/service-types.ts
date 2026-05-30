@@ -1,5 +1,5 @@
-export type TestMode = {
+export type TestModeType = {
   mode: boolean;
 }
 
-export const defaultTestMode = (): TestMode =>  ({mode: false});
+export const defaultTestModeType = (): TestModeType =>  ({mode: false});

@@ -64,6 +64,10 @@ const Settings: React.FC<Props> = () => {
         setupNotificationOnSettingChangedHandler(newSetting);
     }
 
+    const onTestMode = () => {
+        console.log("Test Mode")
+    }
+
     return (
         <View style={styles.container}>
             {/* Reset Masjid */}
@@ -123,6 +127,15 @@ const Settings: React.FC<Props> = () => {
                         checked={setting.beforeIqamaAlert}
                         fill={ConstantsStyles.text.colorLight}
                         width={20} height={20} />
+                </View>
+            </TouchableOpacity>
+            <View style={styles.separator} />
+            {/* Test Mode */}
+            <TouchableOpacity style={styles.settingRow} onPress={onTestMode}>
+                <View style={styles.nameView}>
+                    <Text style={styles.name}>
+                        Test Mode
+                    </Text>
                 </View>
             </TouchableOpacity>
             <View style={styles.separator} />

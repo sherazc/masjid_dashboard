@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { Button, StyleSheet, View } from 'react-native';
 import { useTypedSelector } from '@/store/rootReducer';
 import { useFocusEffect } from 'expo-router';
+import { storeDispatchTestMode } from '@/store/ReduxStoreService';
 
 interface Props {
     children: React.ReactNode;
@@ -16,20 +17,19 @@ export const TestModeButton: React.FC<Props> = ({ children }) => {
     const testMode = useTypedSelector(state => state.testMode);
     let count: number = 0;
 
-
     const onTestMode = () => {
         count++;
         if (count > LIMIT) {
             tempDuration = 0;
             count = 0;
             console.log("turn on or off test mode");
+            storeDispatchTestMode(!testMode.mode)
         }
         console.log("Touched!!!", count);
     }
 
     useFocusEffect(
         useCallback(() => {
-
             const intervalId = setInterval(() => {
                 console.log(`Interval tempDuration=${tempDuration}, count ${count}`);
                 if (count > 0) {
