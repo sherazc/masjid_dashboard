@@ -1,4 +1,9 @@
-const BASE_URL = "https://www.masjiddashboard.com";
+import { Platform } from 'react-native';
+
+const LOCAL_URL = Platform.OS === 'android' ? 'http://10.0.2.2:8085' : 'http://localhost:8085';
+const PROD_URL = "https://www.masjiddashboard.com";
+
+const BASE_URL = __DEV__ ? LOCAL_URL : PROD_URL;
 const PRAYER_DURATION_MIN = 10; // 15 Min. Duration for "Salah in progress"
 const PRAYER_ABOUT_TO_START_MIN = 10; // 15 Min. Prayer about to start.
 const MAGHRIB_LIMIT_MIN = 40; // 40 Min. Maghrib salah will end in.

@@ -5,8 +5,11 @@ Masjids register them self. Once registered they get
 - Prayer time dashboard
 - IOS and Android application
 - JavaScript widgets to show on Masjids own website
+  - Dashboard/TV display fullscreen page.
   - today's prayer time grid
-  - 
+  - Prayer Calendar
+  - Jummah prayer schedule
+  - Reminder of day
 
 Application is deployed on https://masjiddashboard.com/
 
@@ -59,6 +62,14 @@ I have tried to keep components and screens clean from business logic.
 ### MasjidDashboardMobile/src/services/ApiMdb.ts
 Has all the api calls.
 
+### Local Development with Simulators (Android/iOS)
+To run the mobile app against a local `cdb/api` on a Mac:
+1. Ensure the local API is running (usually on port `8085`).
+2. The `BASE_URL` in `MasjidDashboardMobile/src/services/Constants.ts` is configured to automatically switch:
+    - **Android Emulator**: `http://10.0.2.2:8085`
+    - **iOS Simulator**: `http://localhost:8085`
+    - This only applies when `__DEV__` is true.
+3. For production builds, it will use `https://www.masjiddashboard.com`.
 
 ## MDBArchive
 Contains previous versions of MasjidDashboardMobile
