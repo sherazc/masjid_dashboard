@@ -30,7 +30,16 @@ Some time the api test need to create and delete data.
 cdb-e2e is a spring boot application that is used by postman collection to run end to end tests.
 
 ## cdb/infrastructure
-Contains deployment scripts
+Contains deployment scripts and directory structure for the server.
+
+### cdb/infrastructure/sandbox_step1_setup.sh
+Run these commands to developer machine to copy below files on server 
+- infrastructure files
+- Spring boot app.jar
+- Mongo DB backup archive gzip file
+
+### cdb/infrastructure/dev/sandbox_step2_init.sh
+Run these commands on server to set up the server.
 
 ## cdb/ui
 Contains the main ReactJS application.
