@@ -18,7 +18,7 @@
 # Step 4: Delete exisinting collections in
 # Step 4: Bash login in cdbdb docker container and run db
 
-backupDir="db-backup-2025-04-20-01-23"
+backupDir="db-backup-2026-06-02-23-57"
 backupFile="$backupDir.tar.gz"
 tar -zxvf "$backupFile"
 cd "$backupDir"
