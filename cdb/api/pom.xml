@@ -27,7 +27,7 @@
         <spring-boot.run.jvmArguments>-Duser.timezone=UTC</spring-boot.run.jvmArguments>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        <kotlin.version>2.0.0</kotlin.version>
+        <kotlin.version>2.3.10</kotlin.version>
     </properties>
 
     <modules>
