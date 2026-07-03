@@ -1,5 +1,7 @@
 # TODO 
 
+## MasjidDashboardMobile Publish in play and store
+
 ## MasjidDashboardMobile Store
 Redux's createStore is deprecated. The new method is to use https://redux-toolkit.js.org/
 Migrate store to ReactJS's reducer and context api. 
@@ -10,7 +12,6 @@ Add Calendar Screen
 
 ## MasjidDashboardMobile Financial 
 Add Financial Screen
-
 
 # Build Scripts
 Remove this file

@@ -33,16 +33,16 @@ cdb-e2e is a spring boot application that is used by postman collection to run e
 Contains deployment scripts and directory structure for the server.
 
 ### cdb/infrastructure/sandbox_step1_setup.sh
-Run these commands to developer machine to copy below files on server 
+Contains list of commands for developer reference to create ubuntu vm and to copy below files on server 
 - infrastructure files
 - Spring boot app.jar
 - Mongo DB backup archive gzip file
 
 ### cdb/infrastructure/dev/sandbox_step2_init.sh
-Run these commands on server to set up the server.
+Contains list of commands for developer reference to run on to server to set up cdb/api app on the server.
 
 ## cdb/ui
-Contains the main ReactJS application.
+Contains ReactJS application.
 It contains admin panel 
 Contains TV display screen
 
