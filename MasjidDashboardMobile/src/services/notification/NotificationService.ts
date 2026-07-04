@@ -1,4 +1,4 @@
-import {storeDispatchSetting, storeGetCompanyData, storeGetSetting} from "../../store/ReduxStoreService";
+import {storeDispatchSetting, storeGetCompanyData, storeGetSetting, storeGetTestMode} from "../../store/ReduxStoreService";
 import {
     CompanyData,
     CompanyNotification,
@@ -50,7 +50,7 @@ export const setupNotificationOnCompanyDataChangedHandler = (companyData: Compan
  */
 const setupNotification = (settingChanged: boolean, setting: SettingData,
                            companyDataChanged: boolean, companyData: CompanyData) => {
-    if (!isNotificationPossible()) {
+    if (!storeGetTestMode().mode && !isNotificationPossible()) {
         console.log("Notification are not possible")
         return;
     }

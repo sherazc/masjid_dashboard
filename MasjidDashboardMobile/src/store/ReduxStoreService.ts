@@ -1,6 +1,7 @@
 import { CompanyData, CompanyListData, SettingData } from "mdb-core-js";
 import { RecoverInitCompleteAction, RecoverInitFailedAction } from "./LoadingReducer";
 import store from "./rootReducer";
+import { TestModeType } from "@/services/service-types";
 
 
 /**
@@ -52,3 +53,5 @@ export const storeDispatchTestMode = (testMode: boolean) =>
     store.dispatch({type: "TEST_MODE_SET", payload: {mode: testMode}});
 
 export const storeDispatchTestModeDelete = () => store.dispatch({type: "TEST_MODE_DELETE"});
+
+export const storeGetTestMode = (): TestModeType => store.getState().testMode;
