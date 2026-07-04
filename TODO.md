@@ -1,5 +1,16 @@
 # TODO 
 
+# Test notifications
+Using localhost test notifications on devices and simulators
+
+Use this reference
+"README.md -> Local Development with Simulators (Android/iOS)"
+
+# EAS Setup and build
+setup eas.json
+Build it on EAS
+Test it on all devices
+
 ## MasjidDashboardMobile Publish in play and store
 
 ## MasjidDashboardMobile Store
