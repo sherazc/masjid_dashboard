@@ -1,4 +1,4 @@
-import {Company, PrayersDay, ScheduleNotification, SettingData} from "mdb-core-js";
+import {Company, MdDate, PrayersDay, ScheduleNotification, SettingData} from "mdb-core-js";
 import {addMinutesTo24hTime, REGX_TIME_24} from "mdb-core-js";
 import {Constants} from "../Constants";
 import {expoScheduleNotificationAsync} from "./ExpoNotification";
@@ -206,7 +206,8 @@ const scheduleNotifications = async (notifications: ScheduleNotification[]) => {
         }
         try {
             await expoScheduleNotificationAsync(notification);
-            console.log('Notification set.', notification)
+            const mdDate = new MdDate(notification.date)
+            console.log('Notification set.', mdDate.toString(), notification)
         } catch (e) {
             failureCount++
         }
