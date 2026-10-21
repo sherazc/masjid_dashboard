@@ -6,9 +6,11 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "masjiddashboardmobile",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "light",
     "backgroundColor": "#0c274b",
     "ios": {
+      "supportsTablet": true,
+      "requireFullScreen": true,
       "bundleIdentifier": "org.reactjs.native.example.MasjidDashboardMobile"
     },
     "android": {
@@ -28,9 +30,18 @@
     "plugins": [
       "expo-router",
       [
+        "expo-notifications",
+        {
+          "icon": "./assets/images/notification_icon_96x96.png",
+          "color": "#0c274b"
+        }
+      ],
+      [
         "expo-splash-screen",
         {
           "backgroundColor": "#0c274b",
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200,
           "android": {
             "image": "./assets/images/splash-icon.png",
             "imageWidth": 76
