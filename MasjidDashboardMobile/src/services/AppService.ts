@@ -72,7 +72,7 @@ export const beginCompanyDataInterval = (companyData: CompanyData) => {
     destroyTrackerInterval("CompanyDataInterval", tracker);
 
     updateCompanyData(companyData);
-    tracker.updateInterval = setInterval(() => {
+    tracker.updateInterval = +setInterval(() => {
         updateCompanyData(companyData);
     }, Constants.UPDATE_INTERVAL_MILLIS);
 }
@@ -98,7 +98,7 @@ export const beginCompanyListDataInterval = (companyListData: CompanyListData) =
     
     updateCompanyListData(companyListData);
     
-    tracker.updateInterval = setInterval(() => {
+    tracker.updateInterval = +setInterval(() => {
         updateCompanyListData(companyListData);
     }, Constants.UPDATE_INTERVAL_MILLIS);
 }

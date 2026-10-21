@@ -1,3 +1,4 @@
+import type React from "react";
 import { millisecondDurationToMinSecTime, PrayerTimeSummary } from "mdb-core-js";
 import { StyleSheet, Text } from 'react-native';
 import { createEmptyPrayerTimeSummaryMessage, PrayerTimeSummaryMessage } from "../types/react-types";
@@ -28,7 +29,7 @@ const isJamatStatusSet = (prayerTimeSummary: PrayerTimeSummary): boolean => {
 }
 
 
-const createJamatStatus = (prayerTimeSummary: PrayerTimeSummary): JSX.Element => {
+const createJamatStatus = (prayerTimeSummary: PrayerTimeSummary): React.JSX.Element => {
   let result = <></>;
 
   if (prayerTimeSummary.prayerAboutToStartMillis && prayerTimeSummary.prayerAboutToStartMillis > 0) {
@@ -47,7 +48,7 @@ const createJamatStatus = (prayerTimeSummary: PrayerTimeSummary): JSX.Element =>
   return result;
 }
 
-const createNextPrayerStatus = (prayerTimeSummary: PrayerTimeSummary): JSX.Element => {
+const createNextPrayerStatus = (prayerTimeSummary: PrayerTimeSummary): React.JSX.Element => {
   let result = <></>;
 
   if (prayerTimeSummary.nextPrayerInMillis
@@ -65,7 +66,7 @@ const createNextPrayerStatus = (prayerTimeSummary: PrayerTimeSummary): JSX.Eleme
 }
 
 
-const createPrayerName = (prayerTimeSummary: PrayerTimeSummary): JSX.Element => {
+const createPrayerName = (prayerTimeSummary: PrayerTimeSummary): React.JSX.Element => {
   let result = <></>;
   if (prayerTimeSummary.currentPrayerName) {
     result = <Text>{prayerTimeSummary.currentPrayerName}</Text>;

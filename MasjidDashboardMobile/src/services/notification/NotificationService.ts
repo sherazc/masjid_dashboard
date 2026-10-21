@@ -136,8 +136,8 @@ const notificationPromiseRejectCallback = (reason: any) => {
 
 
 const isSameCompany = (setting: SettingData, companyData: CompanyData): boolean => {
-    return setting && setting.companyNotification && !!setting.companyNotification.companyId
-        && companyData.company && !!companyData.company.id
+    return !!setting && !!setting.companyNotification && !!setting.companyNotification.companyId
+        && !!companyData.company && !!companyData.company.id
         && setting.companyNotification.companyId === companyData.company.id;
 }
 

@@ -1,5 +1,4 @@
 
-import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Cog from "../../images/Cog";

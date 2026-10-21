@@ -24,7 +24,7 @@ const PrayerTime: React.FC<Props> = ({ }) => {
     const router = useRouter();
 
     // TODO: make prayerTimeMessageInterval part of PrayerTimeSummaryMessage interface
-    let prayerTimeMessageInterval: NodeJS.Timeout;
+    let prayerTimeMessageInterval: ReturnType<typeof setTimeout>;
     // TODO: make prayerTimeMessageInterval part of PrayerTimeSummaryMessage interface
     const destroyPrayerTimeMessageInterval = () => {
         if (prayerTimeMessageInterval) {
