@@ -33,3 +33,5 @@ web-build/
 *.mobileprovision
 *.pem
 .env*.local
+.idea
+.vscode
