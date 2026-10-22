@@ -183,7 +183,8 @@ const styles = StyleSheet.create({
     todaysDetail: {
         height: "40%",
         alignContent: "center",
-        justifyContent: "center"
+        justifyContent: "flex-end",
+        "paddingBottom": 30
     },
     prayerTimeGrid: {
         height: "60%",
@@ -191,7 +192,8 @@ const styles = StyleSheet.create({
         paddingLeft: 5,
         paddingRight: 5,
         alignContent: "center",
-        justifyContent: "center"
+        justifyContent: "flex-start",
+        paddingTop: 30
     }
 });
 
