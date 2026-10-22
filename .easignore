@@ -1,0 +1,35 @@
+# Only MasjidDashboardMobile and its local dependency mdb-core-js go to EAS Build.
+# When this file exists, EAS uses it instead of .gitignore, so generated and
+# secret files are listed here too.
+
+# Other top-level folders and files
+/cdb
+/MDBArchive
+/misc
+/LICENSE
+/README.md
+/requirment.md
+/TODO.md
+
+# Dependencies and generated output
+node_modules/
+dist/
+.expo/
+web-build/
+.metro-health-check*
+
+# Generated native projects (EAS runs prebuild itself)
+/MasjidDashboardMobile/ios
+/MasjidDashboardMobile/android
+
+# Local build artifacts and secrets
+.DS_Store
+*.log
+*.tsbuildinfo
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.pem
+.env*.local
