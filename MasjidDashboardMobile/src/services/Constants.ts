@@ -6,7 +6,7 @@ const IS_TABLET = Platform.OS === 'ios' ? Platform.isPad : Math.min(SCREEN_WIDTH
 const TABLET_SCALE = 1.5;
 export const scaleForTablet = (size: number): number => IS_TABLET ? Math.round(size * TABLET_SCALE) : size;
 
-const LOCAL_URL = Platform.OS === 'android' ? 'http://10.77.3.178:8085' : 'http://localhost:8085';
+const LOCAL_URL = Platform.OS === 'android' ? 'http://192.168.5.132:8085' : 'http://localhost:8085';
 const PROD_URL = "https://www.masjiddashboard.com";
 
 const BASE_URL = __DEV__ ? LOCAL_URL : PROD_URL;

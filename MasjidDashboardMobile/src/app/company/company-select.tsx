@@ -7,6 +7,7 @@ import { Info } from '../../images/Info';
 
 import { CompanyList } from "@/components/company/CompanyList";
 import { Link } from "expo-router";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { beginCompanyListDataInterval, destroyTrackerInterval } from "@/services/AppService";
 
 import { Brand } from "@/components/company/Brand";
@@ -18,6 +19,7 @@ interface Props {
 const CompanySelect: React.FC<Props> = () => {
     const companyListData = useTypedSelector(state => state.companyListData);
     const loading = useTypedSelector(state => state.loading);
+    const insets = useSafeAreaInsets();
 
 
     useEffect(() => {
@@ -43,7 +45,8 @@ const CompanySelect: React.FC<Props> = () => {
                     <CompanyList companyListData={companyListData} />
                 </View>
                 <View style={{
-                    height: "8%",
+                    paddingTop: 10,
+                    paddingBottom: 10 + insets.bottom, // keep above the system navigation bar
                     alignItems: "center", justifyContent: "center",
                 }}>
                     <Link href="/company/register-info">
@@ -96,7 +99,7 @@ const styles = StyleSheet.create({
         height: "36%"
     },
     companyList: {
-        height: "56%",
+        flex: 1,
         paddingBottom: 0,
         paddingLeft: 15,
         paddingRight: 15,

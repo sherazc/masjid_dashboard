@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import store from "../store/rootReducer";
 import { ThemeProvider, DarkTheme } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
+import { NavigationBar } from "expo-navigation-bar";
 
 export default function RootLayout() {
   const customTheme = {
@@ -20,6 +21,8 @@ export default function RootLayout() {
       <ThemeProvider value={customTheme}>
         {/* <StatusBar> sets top bar where time, batter and network bars are shown */}
         <StatusBar style="light" animated={true}/>
+        {/* <NavigationBar> sets the Android bottom bar (menu, home, back) buttons to white */}
+        <NavigationBar style="dark" />
         <Stack
           screenOptions={{
             headerStyle: { backgroundColor: ConstantsStyles.color.background2 },
