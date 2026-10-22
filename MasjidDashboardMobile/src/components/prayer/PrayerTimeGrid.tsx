@@ -4,7 +4,7 @@ import { dateToDisplayDateLong, dateToDisplayDateShort, hijriStringToDisplayDate
 import { PrayersDay, PrayerTimeSummary, CompanyData } from "mdb-core-js";
 import { PrayerTimeSummaryMessage } from '../../types/react-types';
 import { findConfigurationByName } from "mdb-core-js";
-import { ConfigurationKey, ConstantsStyles } from '../../services/Constants';
+import { ConfigurationKey, ConstantsStyles, scaleForTablet } from '../../services/Constants';
 
 interface Props {
     prayer: PrayersDay;
@@ -21,7 +21,7 @@ export const PrayerTimeGrid: React.FC<Props> = ({ companyData, prayer, prayerTim
                 justifyContent: "center",
                 marginBottom: 15,
             }}>
-                <Text style={{ color: ConstantsStyles.text.colorLight, fontSize: 20 }}>
+                <Text style={{ color: ConstantsStyles.text.colorLight, fontSize: scaleForTablet(20) }}>
                     {dateToDisplayDateLong(new Date())}
                 </Text>
             </View>
@@ -33,7 +33,7 @@ export const PrayerTimeGrid: React.FC<Props> = ({ companyData, prayer, prayerTim
                     justifyContent: "center",
                     marginBottom: 15
                 }}>
-                    <Text style={{ color: ConstantsStyles.text.colorLight, fontSize: 20 }}>
+                    <Text style={{ color: ConstantsStyles.text.colorLight, fontSize: scaleForTablet(20) }}>
                         {hijriStringToDisplayDateLong(companyData.prayer.hijriString)}
                     </Text>
 
@@ -128,7 +128,7 @@ export const PrayerTimeGrid: React.FC<Props> = ({ companyData, prayer, prayerTim
                     <Text style={{ ...styles.prayerAzan, }}>{time24To12(prayer.maghrib)}</Text>
                 </View>
                 <View style={{ ...styles.cell, ...styles.column3, flex: 3.2 }}>
-                    <Text style={{ ...styles.prayerIqama, fontSize: 15 }}>
+                    <Text style={{ ...styles.prayerIqama, fontSize: scaleForTablet(15) }}>
                         {findConfigurationByName(companyData.configurations, ConfigurationKey.MAGHRIB_IQAMA)}
                     </Text>
                 </View>
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
         margin: 10
     },
     row: { flexDirection: "row", flexWrap: "nowrap", borderWidth: .5, borderColor: borderColor, },
-    cell: { justifyContent: "center", padding: 10, flex: 1, alignSelf: "stretch", height: 50 },
+    cell: { justifyContent: "center", padding: 10, flex: 1, alignSelf: "stretch", height: scaleForTablet(50) },
     column1: { flex: 1.2 },
     column2: { flex: 1.8 },
     column3: { flex: 1.8 },
@@ -181,13 +181,13 @@ const styles = StyleSheet.create({
     rowHeading: { backgroundColor: primaryColor, color: ConstantsStyles.text.colorLight, borderTopLeftRadius: 5, borderTopRightRadius: 5 },
     rowInactive: { backgroundColor: ConstantsStyles.color.background4 },
     rowActive: { backgroundColor: "#d1e9f6" },
-    prayerName: { fontSize: 12, color: primaryColor, fontWeight: "bold" },
-    prayerAzan: { fontSize: 20, color: ConstantsStyles.text.colorDark },
-    prayerIqama: { fontSize: 20, color: ConstantsStyles.text.colorDark },
-    prayerNextChange: { fontSize: 10, textAlign: "center", color: ConstantsStyles.text.colorDark },
-    prayerAzanHeading: { fontSize: 15, color: ConstantsStyles.text.colorLight, fontWeight: "bold" },
-    prayerIqamaHeading: { fontSize: 15, color: ConstantsStyles.text.colorLight, fontWeight: "bold" },
-    prayerNextChangeHeading: { color: ConstantsStyles.text.colorLight, fontSize: 10, textAlign: "center", fontWeight: "bold" }
+    prayerName: { fontSize: scaleForTablet(12), color: primaryColor, fontWeight: "bold" },
+    prayerAzan: { fontSize: scaleForTablet(20), color: ConstantsStyles.text.colorDark },
+    prayerIqama: { fontSize: scaleForTablet(20), color: ConstantsStyles.text.colorDark },
+    prayerNextChange: { fontSize: scaleForTablet(10), textAlign: "center", color: ConstantsStyles.text.colorDark },
+    prayerAzanHeading: { fontSize: scaleForTablet(15), color: ConstantsStyles.text.colorLight, fontWeight: "bold" },
+    prayerIqamaHeading: { fontSize: scaleForTablet(15), color: ConstantsStyles.text.colorLight, fontWeight: "bold" },
+    prayerNextChangeHeading: { color: ConstantsStyles.text.colorLight, fontSize: scaleForTablet(10), textAlign: "center", fontWeight: "bold" }
 });
 
 const getActiveOrInActiveStyle = (prayerNumber: number,

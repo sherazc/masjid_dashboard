@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Cog from "../../images/Cog";
 import Sunrise from "../../images/Sunrise";
 import Underline from "../../images/Underline";
-import { ConfigurationKey, ConstantsStyles } from "../../services/Constants";
+import { ConfigurationKey, ConstantsStyles, scaleForTablet } from "../../services/Constants";
 import { dateToTime12h } from "mdb-core-js";
 import { findConfigurationByName } from "mdb-core-js";
 import { PrayerTimeSummaryMessage } from "../../types/react-types";
@@ -28,7 +28,7 @@ export const TodaysDetail: React.FC<Props> = ({ prayerTimeMessage, companyData})
                     <Text style={styles.companyName}>
                         {getCompanyName(companyData)}
                     </Text>
-                    <Underline fill={ConstantsStyles.color.lines} width={220} />
+                    <Underline fill={ConstantsStyles.color.lines} width={scaleForTablet(220)} />
                 </View>
                 <View style={styles.settingView}>
                     <TouchableOpacity onPress={() => restartCompanyDataInterval(companyData)}>
@@ -84,7 +84,7 @@ const getSunriseComponent = (prayerTimeMessage: PrayerTimeSummaryMessage) => {
         && prayerTimeMessage.prayerTimeSummary.sunriseTime) {
 
         result = <>
-            <Sunrise fill="#fff" width={55} height={25} />
+            <Sunrise fill="#fff" width={scaleForTablet(55)} height={scaleForTablet(25)} />
             <Text style={styles.heading}>Sunrise</Text>
             <Text style={styles.textNormal}>
                 {dateToTime12h(prayerTimeMessage.prayerTimeSummary.sunriseTime)}
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     companyName: {
-        fontSize: 25,
+        fontSize: scaleForTablet(25),
         color: ConstantsStyles.text.colorLight,
         marginTop: 10,
         textAlign: "center",
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     },
     prayerName: {
         color: ConstantsStyles.text.colorLight,
-        fontSize: 35,
+        fontSize: scaleForTablet(35),
         marginBottom: 10,
     },
     prayerJammatSeparatorView: {
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     },
     prayerJammatSeparator: {
         width: 3,
-        height: 60,
+        height: scaleForTablet(60),
         backgroundColor: ConstantsStyles.color.lines,
         borderRadius: 3,
     },
@@ -157,11 +157,11 @@ const styles = StyleSheet.create({
     },
     heading: {
         color: ConstantsStyles.text.colorLight,
-        fontSize: 15,
+        fontSize: scaleForTablet(15),
         fontWeight: "bold"
     },
     textNormal: {
         color: ConstantsStyles.text.colorLight,
-        fontSize: 15,
+        fontSize: scaleForTablet(15),
     }
 });

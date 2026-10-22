@@ -1,6 +1,12 @@
-import { Platform } from 'react-native';
+import { Dimensions, Platform } from 'react-native';
 
-const LOCAL_URL = Platform.OS === 'android' ? 'http://10.0.0.60:8085' : 'http://localhost:8085';
+// Tablets (iPad, Android tablets) get larger text and sizes. Phones are unchanged.
+const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
+const IS_TABLET = Platform.OS === 'ios' ? Platform.isPad : Math.min(SCREEN_WIDTH, SCREEN_HEIGHT) >= 600;
+const TABLET_SCALE = 1.5;
+export const scaleForTablet = (size: number): number => IS_TABLET ? Math.round(size * TABLET_SCALE) : size;
+
+const LOCAL_URL = Platform.OS === 'android' ? 'http://10.77.3.178:8085' : 'http://localhost:8085';
 const PROD_URL = "https://www.masjiddashboard.com";
 
 const BASE_URL = __DEV__ ? LOCAL_URL : PROD_URL;

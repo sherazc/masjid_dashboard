@@ -1,6 +1,7 @@
 import type React from "react";
 import { millisecondDurationToMinSecTime, PrayerTimeSummary } from "mdb-core-js";
 import { StyleSheet, Text } from 'react-native';
+import { scaleForTablet } from "../services/Constants";
 import { createEmptyPrayerTimeSummaryMessage, PrayerTimeSummaryMessage } from "../types/react-types";
 
 export const processPrayerTimeMessage = (prayerTimeSummary?: PrayerTimeSummary): PrayerTimeSummaryMessage => {
@@ -79,11 +80,11 @@ const createPrayerName = (prayerTimeSummary: PrayerTimeSummary): React.JSX.Eleme
 const styles = StyleSheet.create({
   heading: {
     color: "#fff",
-    fontSize: 15,
+    fontSize: scaleForTablet(15),
     fontWeight: "bold"
   },
   durationText: {
     color: "#fff",
-    fontSize: 25,
+    fontSize: scaleForTablet(25),
   }
 });
