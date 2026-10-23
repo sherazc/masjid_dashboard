@@ -12,7 +12,10 @@
       "supportsTablet": true,
       "requireFullScreen": true,
       "buildNumber": "50",
-      "bundleIdentifier": "org.reactjs.native.example.MasjidDashboardMobile"
+      "bundleIdentifier": "org.reactjs.native.example.MasjidDashboardMobile",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
