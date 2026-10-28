@@ -5,11 +5,13 @@
 # Other top-level folders and files
 /cdb
 /MDBArchive
+MDBArchive.zip
 /misc
 /LICENSE
 /README.md
 /requirment.md
 /TODO.md
+
 
 # Dependencies and generated output
 node_modules/
