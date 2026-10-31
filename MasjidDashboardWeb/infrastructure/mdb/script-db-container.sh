@@ -9,7 +9,7 @@ echo Clean up DB
 docker stop $db_name
 sleep 30
 docker rm -f $db_name
-# sudo rm -rf $dataDir
+sudo rm -rf $dataDir
 mkdir -p $dataDir
 
 sleep 3

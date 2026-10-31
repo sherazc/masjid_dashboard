@@ -9,5 +9,4 @@ class MdbApplicationTests {
 	// @Test
 	void contextLoads() {
 	}
-
 }
