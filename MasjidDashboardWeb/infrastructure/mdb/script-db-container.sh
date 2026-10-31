@@ -6,13 +6,10 @@ source .env
 dataDir=$container_disks/$db_name
 
 echo Clean up DB
-docker stop $db_name
-sleep 30
-docker rm -f $db_name
-sudo rm -rf $dataDir
+docker stop $db_name || true
+docker rm -f $db_name || true
+rm -rf $dataDir
 mkdir -p $dataDir
-
-sleep 3
 
 echo Run DB container
 docker run \
