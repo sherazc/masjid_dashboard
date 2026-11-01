@@ -249,11 +249,10 @@ CREATE TABLE prayer_day (
     CONSTRAINT uq_prayer_day UNIQUE (prayer_config_id, prayer_date)
 );
 
-CREATE TABLE picklist (
+CREATE TABLE company_configuration (
     id             BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     sort_order     INT          NOT NULL DEFAULT 0,
     name           VARCHAR(255) NOT NULL,
-    type           VARCHAR(16)  CHECK (type IN ('text', 'date', 'number', 'bool', 'time')),
     label          VARCHAR(255),
     default_value  TEXT,
     description    TEXT
