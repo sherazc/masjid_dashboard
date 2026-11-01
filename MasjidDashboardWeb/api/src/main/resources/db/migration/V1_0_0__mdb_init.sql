@@ -249,17 +249,8 @@ CREATE TABLE prayer_day (
     CONSTRAINT uq_prayer_day UNIQUE (prayer_config_id, prayer_date)
 );
 
--- ---------------------------------------------------------------------------
--- Picklists (global configuration templates)
--- ---------------------------------------------------------------------------
-
 CREATE TABLE picklist (
-    id  BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY
-);
-
-CREATE TABLE picklist_configuration (
     id             BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    picklist_id    BIGINT       NOT NULL REFERENCES picklist (id) ON DELETE CASCADE,
     sort_order     INT          NOT NULL DEFAULT 0,
     name           VARCHAR(255) NOT NULL,
     type           VARCHAR(16)  CHECK (type IN ('text', 'date', 'number', 'bool', 'time')),
@@ -267,7 +258,6 @@ CREATE TABLE picklist_configuration (
     default_value  TEXT,
     description    TEXT
 );
-CREATE INDEX idx_picklist_configuration_picklist ON picklist_configuration (picklist_id);
 
 -- ---------------------------------------------------------------------------
 -- Hadith
