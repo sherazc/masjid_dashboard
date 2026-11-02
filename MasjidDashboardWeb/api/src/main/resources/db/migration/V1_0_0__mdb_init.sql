@@ -120,27 +120,6 @@ CREATE TABLE company_list_version
 -- lists; each list is now a child table keyed by company_id.
 -- ---------------------------------------------------------------------------
 
-CREATE TABLE announcement
-(
-    id         BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    company_id BIGINT NOT NULL REFERENCES company (id) ON DELETE CASCADE,
-    sort_order INT    NOT NULL DEFAULT 0,
-    detail     TEXT
-);
-CREATE INDEX idx_announcement_company ON announcement (company_id);
-
-CREATE TABLE event
-(
-    id          BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    company_id  BIGINT NOT NULL REFERENCES company (id) ON DELETE CASCADE,
-    sort_order  INT    NOT NULL DEFAULT 0,
-    event_date  TIMESTAMPTZ,
-    title       VARCHAR(255),
-    event_time  VARCHAR(64),
-    description TEXT
-);
-CREATE INDEX idx_event_company ON event (company_id);
-
 CREATE TABLE expense
 (
     id         BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -304,18 +283,3 @@ CREATE TABLE hadith
     text      TEXT NOT NULL,
     reference VARCHAR(512)
 );
-
--- ---------------------------------------------------------------------------
--- File metadata (binary content lives in S3)
--- ---------------------------------------------------------------------------
-
-CREATE TABLE cdb_file
-(
-    id         BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    company_id BIGINT       NOT NULL REFERENCES company (id) ON DELETE CASCADE,
-    storage    VARCHAR(32)  NOT NULL CHECK (storage IN ('S3CdbClient', 'S3CdbServer')),
-    file_type  VARCHAR(32)  NOT NULL CHECK (file_type IN ('CompanyLogo')),
-    directory  VARCHAR(512) NOT NULL,
-    file_name  VARCHAR(255) NOT NULL
-);
-CREATE INDEX idx_cdb_file_company ON cdb_file (company_id, file_type);
