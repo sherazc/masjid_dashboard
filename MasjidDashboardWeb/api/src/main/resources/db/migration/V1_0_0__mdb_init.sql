@@ -120,18 +120,7 @@ CREATE TABLE company_list_version
 -- lists; each list is now a child table keyed by company_id.
 -- ---------------------------------------------------------------------------
 
-CREATE TABLE expense
-(
-    id         BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    company_id BIGINT NOT NULL REFERENCES company (id) ON DELETE CASCADE,
-    sort_order INT    NOT NULL DEFAULT 0,
-    line_item  VARCHAR(255),
-    amount     NUMERIC(14, 2),
-    enabled    BOOLEAN
-);
-CREATE INDEX idx_expense_company ON expense (company_id);
-
-CREATE TABLE fund
+CREATE TABLE fundraise_campaign
 (
     id         BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     company_id BIGINT NOT NULL REFERENCES company (id) ON DELETE CASCADE,
@@ -143,9 +132,9 @@ CREATE TABLE fund
     end_date   DATE,
     enabled    BOOLEAN
 );
-CREATE INDEX idx_fund_company ON fund (company_id);
+CREATE INDEX idx_fundraise_campaign_company ON fundraise_campaign (company_id);
 
-CREATE TABLE jummah
+CREATE TABLE jummah_khateeb
 (
     id          BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     company_id  BIGINT NOT NULL REFERENCES company (id) ON DELETE CASCADE,
@@ -154,29 +143,28 @@ CREATE TABLE jummah
     khateeb     VARCHAR(255),
     enabled     BOOLEAN
 );
-CREATE INDEX idx_jummah_company ON jummah (company_id);
+CREATE INDEX idx_jummah_khateeb_company ON jummah_khateeb (company_id);
 
 -- Expense sheets (CentralControl.expenseSheets)
-CREATE TABLE sheet
+CREATE TABLE expense_sheet
 (
     id          BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    company_id  BIGINT  NOT NULL REFERENCES company (id) ON DELETE CASCADE,
-    sort_order  INT     NOT NULL DEFAULT 0,
+    company_id  BIGINT NOT NULL REFERENCES company (id) ON DELETE CASCADE,
+    sort_order  INT    NOT NULL DEFAULT 0,
     name        VARCHAR(255),
-    description TEXT,
-    enabled     BOOLEAN NOT NULL DEFAULT FALSE
+    description TEXT
 );
-CREATE INDEX idx_sheet_company ON sheet (company_id);
+CREATE INDEX idx_expense_sheet_company ON expense_sheet (company_id);
 
-CREATE TABLE sheet_row
+CREATE TABLE expense_sheet_row
 (
-    id        BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    sheet_id  BIGINT NOT NULL REFERENCES sheet (id) ON DELETE CASCADE,
-    row_order INT    NOT NULL,
-    label     VARCHAR(255),
-    value     TEXT
+    id         BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    sheet_id   BIGINT NOT NULL REFERENCES expense_sheet (id) ON DELETE CASCADE,
+    sort_order INT    NOT NULL DEFAULT 0,
+    label      VARCHAR(255),
+    value      TEXT
 );
-CREATE INDEX idx_sheet_row_sheet ON sheet_row (sheet_id);
+CREATE INDEX idx_expense_sheet_row_sheet ON expense_sheet_row (sheet_id);
 
 -- ---------------------------------------------------------------------------
 -- Prayer configuration and daily prayer times
@@ -265,10 +253,10 @@ CREATE TABLE company_configuration_default
 
 CREATE TABLE company_configuration_override
 (
-    id         BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    company_id BIGINT       NOT NULL REFERENCES company (id) ON DELETE CASCADE,
+    id                               BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    company_id                       BIGINT NOT NULL REFERENCES company (id) ON DELETE CASCADE,
     company_configuration_default_id BIGINT NOT NULL REFERENCES company_configuration_default (id) ON DELETE CASCADE,
-    value      TEXT
+    value                            TEXT
 );
 CREATE INDEX idx_custom_configuration_company ON company_configuration_override (company_id);
 
