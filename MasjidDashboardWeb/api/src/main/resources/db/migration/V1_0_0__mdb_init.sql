@@ -1,26 +1,9 @@
--- Masjid Dashboard initial schema.
--- Derived from the CDB MongoDB model (cdb/api/data/.../model).
---
--- Conventions
---   * Primary keys are BIGINT identity columns (replaces Mongo ObjectId).
---   * Embedded Mongo arrays/objects are normalized into child tables, except
---     small fixed-shape objects (address, geo code, DST) which become columns.
---   * Ordered lists keep their order in a sort_order column.
---   * Case-insensitive lookups (findByNameIgnoreCase / findByUrlIgnoreCase)
---     are served by unique indexes on lower(...).
---   * Audit columns mirror BaseModel (createdDate/updatedDate/createdBy/updatedBy).
-
--- ---------------------------------------------------------------------------
--- Auth: company, user, roles
--- ---------------------------------------------------------------------------
-
 CREATE TABLE company
 (
     id              BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name            VARCHAR(255) NOT NULL,
     url             VARCHAR(255) NOT NULL,
     website         VARCHAR(512) NOT NULL,
-    -- Address (embedded object)
     street          VARCHAR(255),
     city            VARCHAR(128),
     state           VARCHAR(64),
@@ -56,7 +39,6 @@ CREATE TABLE user_profile
     updated_by        VARCHAR(255)
 );
 
--- Login is company scoped ("<companyId>/<email>"), so email is unique per company.
 CREATE UNIQUE INDEX uq_user_profile_company_email_lower ON user_profile (company_id, lower(email));
 
 CREATE TABLE user_role
@@ -79,7 +61,6 @@ VALUES ('SUPER_ADMIN'),
        ('ADMIN'),
        ('USER');
 
--- Hashed refresh tokens (the raw token is only ever returned to the client).
 CREATE TABLE refresh_token
 (
     id              BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -92,10 +73,6 @@ CREATE TABLE refresh_token
 );
 CREATE INDEX idx_refresh_token_user_profile ON refresh_token (user_profile_id);
 
--- ---------------------------------------------------------------------------
--- Versioning (clients poll these to detect changes)
--- ---------------------------------------------------------------------------
-
 CREATE TABLE company_data_version
 (
     id         BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -103,7 +80,6 @@ CREATE TABLE company_data_version
     version    BIGINT NOT NULL
 );
 
--- Version of the company list as a whole (global; expected to hold one row).
 CREATE TABLE company_list_version
 (
     id           BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -113,12 +89,6 @@ CREATE TABLE company_list_version
     created_by   VARCHAR(255),
     updated_by   VARCHAR(255)
 );
-
--- ---------------------------------------------------------------------------
--- Central control (per-company display content).
--- The Mongo centralControl document had one row per company with embedded
--- lists; each list is now a child table keyed by company_id.
--- ---------------------------------------------------------------------------
 
 CREATE TABLE fundraise_campaign
 (
@@ -145,7 +115,6 @@ CREATE TABLE jummah_khateeb
 );
 CREATE INDEX idx_jummah_khateeb_company ON jummah_khateeb (company_id);
 
--- Expense sheets (CentralControl.expenseSheets)
 CREATE TABLE expense_sheet
 (
     id          BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -166,10 +135,6 @@ CREATE TABLE expense_sheet_row
 );
 CREATE INDEX idx_expense_sheet_row_sheet ON expense_sheet_row (sheet_id);
 
--- ---------------------------------------------------------------------------
--- Prayer configuration and daily prayer times
--- ---------------------------------------------------------------------------
-
 CREATE TABLE prayer_config
 (
     id                      BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -177,15 +142,12 @@ CREATE TABLE prayer_config
     location                VARCHAR(255),
     calculation_method      INT,
     asr_juristic_method     INT,
-    -- Offsets (minutes) for the 7 prayer times; array of length 7.
     prayer_offset_minutes   INT[]  NOT NULL DEFAULT ARRAY [0,0,0,0,0,0,0],
-    -- GeoCode (embedded object)
     geo_latitude            DOUBLE PRECISION,
     geo_longitude           DOUBLE PRECISION,
     geo_timezone            DOUBLE PRECISION,
     geo_timezone_id         VARCHAR(64),
     geo_timezone_name       VARCHAR(128),
-    -- Dst (embedded object)
     dst_enable              BOOLEAN,
     dst_automatic_calculate BOOLEAN,
     dst_begin_month_date    VARCHAR(32),
@@ -193,8 +155,6 @@ CREATE TABLE prayer_config
     CONSTRAINT chk_prayer_offset_len CHECK (cardinality(prayer_offset_minutes) = 7)
 );
 
--- One row per day; replaces PrayerConfig.prayers (embedded list).
--- Times are stored as the display strings the clients already consume.
 CREATE TABLE prayer_day
 (
     id                  BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -212,7 +172,7 @@ CREATE TABLE prayer_day
     isha                VARCHAR(16),
     isha_iqama          VARCHAR(16),
     sunrise             VARCHAR(16),
-    -- Scheduled iqama changes
+    -- TODO: Do we need these. These are calculated. Should only be in DTO
     fajr_change         VARCHAR(16),
     fajr_change_date    TIMESTAMPTZ,
     dhuhr_change        VARCHAR(16),
