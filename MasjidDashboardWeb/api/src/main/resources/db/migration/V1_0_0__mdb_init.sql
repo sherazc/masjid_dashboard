@@ -106,14 +106,23 @@ CREATE INDEX idx_fundraise_campaign_company ON fundraise_campaign (company_id);
 
 CREATE TABLE jummah_khateeb
 (
-    id          BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    company_id  BIGINT NOT NULL REFERENCES company (id) ON DELETE CASCADE,
-    sort_order  INT    NOT NULL DEFAULT 0,
-    jummah_date DATE,
-    khateeb     VARCHAR(255),
-    enabled     BOOLEAN
+    id           BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    company_id   BIGINT NOT NULL REFERENCES company (id) ON DELETE CASCADE,
+    jummah_date  DATE,
+    khateeb_name VARCHAR(255),
+    enabled      BOOLEAN
 );
 CREATE INDEX idx_jummah_khateeb_company ON jummah_khateeb (company_id);
+
+CREATE TABLE jummah_jammat
+(
+    id           BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    company_id   BIGINT NOT NULL REFERENCES company (id) ON DELETE CASCADE,
+    jummah_time  TIMESTAMPTZ,
+    description VARCHAR(255)
+);
+CREATE INDEX idx_jummah_jammat_company ON jummah_jammat (company_id);
+
 
 CREATE TABLE expense_sheet
 (
