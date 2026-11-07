@@ -177,7 +177,6 @@ CREATE TABLE prayer_day
     asr                 VARCHAR(16),
     asr_iqama           VARCHAR(16),
     maghrib             VARCHAR(16),
-    maghrib_iqama       VARCHAR(16),
     isha                VARCHAR(16),
     isha_iqama          VARCHAR(16),
     sunrise             VARCHAR(16),
