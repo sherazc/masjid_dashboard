@@ -40,6 +40,15 @@
 - For anything new I write a Google Doc with screenshots, code snippets and short descriptions.
 
 ## 8. Goal: software factory (multi-agent development)
+
+### What I want to understand
+- I heard people online built a "software factory": multiple AI agents do the development.
+- The humans oversee the agents, like an architect / manager / CEO.
+- I want to learn how this works: agent orchestrator, sub agents, teams (or whatever each is called).
+- Today I work as a pair programmer with one AI. I want to understand the multi-agent way, and whether it fits my style.
+- I must fully understand it and try it myself before I trust it (see Principles).
+
+### Steps
 1. Learn the high-level concepts and the different ways to develop with multiple agents.
 2. Build a throwaway project in a subfolder of the `masjid_dashboard` root, and learn the details along the way.
 3. Apply what I learned to `MasjidDashboardWeb`.
