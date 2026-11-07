@@ -168,8 +168,8 @@ CREATE TABLE prayer_day
 (
     id                  BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     prayer_config_id    BIGINT      NOT NULL REFERENCES prayer_config (id) ON DELETE CASCADE,
-    prayer_date         TIMESTAMPTZ NOT NULL,
-    hijri_string        VARCHAR(64),
+    prayer_date         DATE NOT NULL,
+    -- varchar because they are in 18:52 format
     fajr                VARCHAR(16),
     fajr_iqama          VARCHAR(16),
     dhuhr               VARCHAR(16),
@@ -181,17 +181,6 @@ CREATE TABLE prayer_day
     isha                VARCHAR(16),
     isha_iqama          VARCHAR(16),
     sunrise             VARCHAR(16),
-    -- TODO: Do we need these. These are calculated. Should only be in DTO
-    fajr_change         VARCHAR(16),
-    fajr_change_date    TIMESTAMPTZ,
-    dhuhr_change        VARCHAR(16),
-    dhuhr_change_date   TIMESTAMPTZ,
-    asr_change          VARCHAR(16),
-    asr_change_date     TIMESTAMPTZ,
-    maghrib_change      VARCHAR(16),
-    maghrib_change_date TIMESTAMPTZ,
-    isha_change         VARCHAR(16),
-    isha_change_date    TIMESTAMPTZ,
     CONSTRAINT uq_prayer_day UNIQUE (prayer_config_id, prayer_date)
 );
 
