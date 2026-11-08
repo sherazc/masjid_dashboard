@@ -56,10 +56,12 @@ CREATE TABLE m2m_user_profile_user_role
 );
 CREATE INDEX idx_m2m_user_profile_user_role_role ON m2m_user_profile_user_role (user_role_id);
 
-INSERT INTO user_role (role_name)
-VALUES ('SUPER_ADMIN'),
-       ('ADMIN'),
-       ('USER');
+INSERT INTO user_role (id, role_name) OVERRIDING SYSTEM VALUE
+VALUES (1, 'SUPER_ADMIN'),
+       (2, 'ADMIN'),
+       (3, 'USER');
+
+SELECT setval(pg_get_serial_sequence('user_role', 'id'), (SELECT COALESCE(MAX(id), 0) FROM user_role));
 
 CREATE TABLE refresh_token
 (
@@ -116,9 +118,9 @@ CREATE INDEX idx_jummah_khateeb_company ON jummah_khateeb (company_id);
 
 CREATE TABLE jummah_jammat
 (
-    id           BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    company_id   BIGINT NOT NULL REFERENCES company (id) ON DELETE CASCADE,
-    jummah_time  TIMESTAMPTZ,
+    id          BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    company_id  BIGINT NOT NULL REFERENCES company (id) ON DELETE CASCADE,
+    jummah_time TIMESTAMPTZ,
     description VARCHAR(255)
 );
 CREATE INDEX idx_jummah_jammat_company ON jummah_jammat (company_id);
@@ -166,20 +168,20 @@ CREATE TABLE prayer_config
 
 CREATE TABLE prayer_day
 (
-    id                  BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    prayer_config_id    BIGINT      NOT NULL REFERENCES prayer_config (id) ON DELETE CASCADE,
-    prayer_date         DATE NOT NULL,
+    id               BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    prayer_config_id BIGINT NOT NULL REFERENCES prayer_config (id) ON DELETE CASCADE,
+    prayer_date      DATE   NOT NULL,
     -- varchar because they are in 18:52 format
-    fajr                VARCHAR(16),
-    fajr_iqama          VARCHAR(16),
-    dhuhr               VARCHAR(16),
-    dhuhr_iqama         VARCHAR(16),
-    asr                 VARCHAR(16),
-    asr_iqama           VARCHAR(16),
-    maghrib             VARCHAR(16),
-    isha                VARCHAR(16),
-    isha_iqama          VARCHAR(16),
-    sunrise             VARCHAR(16),
+    fajr             VARCHAR(16),
+    fajr_iqama       VARCHAR(16),
+    dhuhr            VARCHAR(16),
+    dhuhr_iqama      VARCHAR(16),
+    asr              VARCHAR(16),
+    asr_iqama        VARCHAR(16),
+    maghrib          VARCHAR(16),
+    isha             VARCHAR(16),
+    isha_iqama       VARCHAR(16),
+    sunrise          VARCHAR(16),
     CONSTRAINT uq_prayer_day UNIQUE (prayer_config_id, prayer_date)
 );
 
