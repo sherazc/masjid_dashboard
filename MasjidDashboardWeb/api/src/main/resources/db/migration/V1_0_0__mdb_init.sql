@@ -210,6 +210,31 @@ CREATE TABLE company_configuration_default
     description         TEXT
 );
 
+INSERT INTO picklist_group (picklist_group_name)
+VALUES ('clock_type');
+
+INSERT INTO picklist (picklist_group_name, key, value, display_value)
+VALUES ('clock_type', '0', '0', 'No Clock'),
+       ('clock_type', '1', '1', 'Analog'),
+       ('clock_type', '2', '2', 'Digital');
+
+INSERT INTO company_configuration_default (sort_order, name, picklist_group_name, label, default_value, description)
+VALUES (2, 'hijri_adjust_days', NULL, 'Hijri Adjust Days', '0',
+        'This config is used to adjust Hijri Calendar date. Valid value is number. Could be positive or negative values'),
+       (3, 'clock_type', 'clock_type', 'Clock Type', '1',
+        E'0 = no clock\n1 = analog\n2 = digital'),
+       (4, 'fajr_iqama', NULL, 'Fajr Iqama', '',
+        E'Overrides Fajr iqama time.\nIqama and next change time in calendar will be ignored.\nEnter time in 24 hours format 00:00 or a short message.'),
+       (5, 'zuhar_iqama', NULL, 'Zuhr Iqama', '',
+        E'Overrides Zuhr iqama time.\nIqama and next change time in calendar will be ignored.\nEnter time in 24 hours format 00:00 or a short message.'),
+       (6, 'asr_iqama', NULL, 'Asr Iqama', '',
+        E'Overrides Asr iqama time.\nIqama and next change time in calendar will be ignored.\nEnter time in 24 hours format 00:00 or a short message.'),
+       (7, 'maghrib_iqama', NULL, 'Maghrib Iqama', '5 Mins',
+        E'Overrides Magrib time.\nIqama and next change time in calendar will be ignored.\nEnter time in 24 hours format 00:00 or a short message.'),
+       (8, 'isha_iqama', NULL, 'Isha Iqama', '',
+        E'Overrides Isha iqama time.\nIqama and next change time in calendar will be ignored.\nEnter time in 24 hours format 00:00 or a short message.'),
+       ;
+
 CREATE TABLE company_configuration_override
 (
     id                               BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
