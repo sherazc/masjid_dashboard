@@ -11,9 +11,9 @@ CREATE TABLE company
     longitude       VARCHAR(32),
     latitude        VARCHAR(32),
     active          BOOLEAN      NOT NULL DEFAULT TRUE,
-    expiration_date TIMESTAMPTZ,
-    created_date    TIMESTAMPTZ  NOT NULL DEFAULT now(),
-    updated_date    TIMESTAMPTZ,
+    expiration_date TIMESTAMP,
+    created_date    TIMESTAMP NOT NULL DEFAULT now(),
+    updated_date    TIMESTAMP,
     created_by      VARCHAR(255),
     updated_by      VARCHAR(255)
 );
@@ -30,11 +30,11 @@ CREATE TABLE user_profile
     first_name        VARCHAR(128),
     last_name         VARCHAR(128),
     email_verify_code VARCHAR(255),
-    registration_date TIMESTAMPTZ,
+    registration_date TIMESTAMP,
     active            BOOLEAN      NOT NULL DEFAULT FALSE,
     verified          BOOLEAN      NOT NULL DEFAULT FALSE,
-    created_date      TIMESTAMPTZ  NOT NULL DEFAULT now(),
-    updated_date      TIMESTAMPTZ,
+    created_date      TIMESTAMP NOT NULL DEFAULT now(),
+    updated_date      TIMESTAMP,
     created_by        VARCHAR(255),
     updated_by        VARCHAR(255)
 );
@@ -67,10 +67,10 @@ CREATE TABLE refresh_token
 (
     id              BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     user_profile_id BIGINT       NOT NULL REFERENCES user_profile (id) ON DELETE CASCADE,
-    token_hash      VARCHAR(255) NOT NULL,
-    expires_at      TIMESTAMPTZ  NOT NULL,
-    revoked_at      TIMESTAMPTZ,
-    created_at      TIMESTAMPTZ  NOT NULL DEFAULT now(),
+    token_hash      VARCHAR(2048) NOT NULL,
+    expires_at      TIMESTAMP NOT NULL,
+    revoked_at      TIMESTAMP,
+    created_at      TIMESTAMP NOT NULL DEFAULT now(),
     CONSTRAINT uq_refresh_token_hash UNIQUE (token_hash)
 );
 CREATE INDEX idx_refresh_token_user_profile ON refresh_token (user_profile_id);
@@ -86,8 +86,8 @@ CREATE TABLE company_list_version
 (
     id           BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     version      BIGINT      NOT NULL,
-    created_date TIMESTAMPTZ NOT NULL DEFAULT now(),
-    updated_date TIMESTAMPTZ,
+    created_date TIMESTAMP NOT NULL DEFAULT now(),
+    updated_date TIMESTAMP,
     created_by   VARCHAR(255),
     updated_by   VARCHAR(255)
 );
@@ -120,7 +120,7 @@ CREATE TABLE jummah_jammat
 (
     id          BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     company_id  BIGINT NOT NULL REFERENCES company (id) ON DELETE CASCADE,
-    jummah_time TIMESTAMPTZ,
+    jummah_time TIMESTAMP,
     description VARCHAR(255)
 );
 CREATE INDEX idx_jummah_jammat_company ON jummah_jammat (company_id);
@@ -153,7 +153,12 @@ CREATE TABLE prayer_config
     location                VARCHAR(255),
     calculation_method      INT,
     asr_juristic_method     INT,
-    prayer_offset_minutes   INT[]  NOT NULL DEFAULT ARRAY [0,0,0,0,0,0,0],
+    offset_fajar            INT,
+    offset_dhuhr            INT,
+    offset_asr              INT,
+    offset_maghrib          INT,
+    offset_isha             INT,
+    offset_sunrise          INT,
     geo_latitude            DOUBLE PRECISION,
     geo_longitude           DOUBLE PRECISION,
     geo_timezone            DOUBLE PRECISION,
@@ -162,8 +167,7 @@ CREATE TABLE prayer_config
     dst_enable              BOOLEAN,
     dst_automatic_calculate BOOLEAN,
     dst_begin_month_date    VARCHAR(32),
-    dst_end_month_date      VARCHAR(32),
-    CONSTRAINT chk_prayer_offset_len CHECK (cardinality(prayer_offset_minutes) = 7)
+    dst_end_month_date      VARCHAR(32)
 );
 
 CREATE TABLE prayer_day
