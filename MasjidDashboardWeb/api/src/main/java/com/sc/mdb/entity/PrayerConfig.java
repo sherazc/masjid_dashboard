@@ -22,9 +22,11 @@ public class PrayerConfig {
 
     private String location;
 
-    private Integer calculationMethod;
+    @Convert(converter = CalculationMethod.JpaConverter.class)
+    private CalculationMethod calculationMethod;
 
-    private Integer asrJuristicMethod;
+    @Convert(converter = AsrJuristicMethod.JpaConverter.class)
+    private AsrJuristicMethod asrJuristicMethod;
 
     private Integer offsetFajar;
 
