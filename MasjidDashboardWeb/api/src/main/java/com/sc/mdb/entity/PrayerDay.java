@@ -26,9 +26,12 @@ public class PrayerDay {
     @JoinColumn(name = "prayer_config_id", nullable = false)
     private PrayerConfig prayerConfig;
 
+    // Could be any leap year.
+    // Year will be calculated in real time.
     @Column(nullable = false)
     private LocalDate prayerDate;
 
+    // Times are in string because they are in HH:mm format.
     @Column(length = 16)
     private String fajr;
 
