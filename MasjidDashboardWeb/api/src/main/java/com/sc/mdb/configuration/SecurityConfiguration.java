@@ -91,7 +91,6 @@ public class SecurityConfiguration {
     corsConfiguration.setAllowedOriginPatterns(Collections.singletonList("*"));
     corsConfiguration.setAllowedHeaders(Collections.singletonList("*"));
     corsConfiguration.setAllowedMethods(Collections.singletonList("*"));
-    corsConfiguration.setAllowedOriginPatterns(Collections.singletonList("*"));
     corsConfiguration.setAllowCredentials(true);
     corsConfiguration.applyPermitDefaultValues();
     corsConfiguration.addExposedHeader("Content-Disposition");
