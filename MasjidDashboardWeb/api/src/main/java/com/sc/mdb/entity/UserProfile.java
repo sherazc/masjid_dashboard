@@ -61,5 +61,5 @@ public class UserProfile {
     @JoinTable(name = "m2m_user_profile_user_role",
             joinColumns = @JoinColumn(name = "user_profile_id"),
             inverseJoinColumns = @JoinColumn(name = "user_role_id"))
-    private Set<UserRole> roles = new HashSet<>();
+    private Set<UserRole> userRoles = new HashSet<>();
 }
