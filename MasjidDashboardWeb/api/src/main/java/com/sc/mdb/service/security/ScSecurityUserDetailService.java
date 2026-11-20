@@ -1,5 +1,7 @@
 package com.sc.mdb.service.security;
 
+import com.sc.mdb.dto.UserProfileDto;
+import com.sc.mdb.dto.UserProfileUserDetails;
 import com.sc.mdb.repository.UserProfileRepository;
 import com.sc.mdb.service.UserProfileService;
 import lombok.RequiredArgsConstructor;
@@ -7,6 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -25,8 +29,13 @@ public class ScSecurityUserDetailService implements UserDetailsService {
     Long companyId = Long.parseLong(userNameParts[0].trim());
     String email = userNameParts[0].trim();
 
-    userProfileService.findByCompanyIdEmail(companyId,email);
+    userProfileService.findByCompanyIdEmail(companyId,email)
+        .map(user -> new UserProfileUserDetails(new UserProfileDto(user), getRoles(companyId, email)));
 
+    return null;
+  }
+
+  private List<String> getRoles(Long companyId, String email) {
     return null;
   }
 }

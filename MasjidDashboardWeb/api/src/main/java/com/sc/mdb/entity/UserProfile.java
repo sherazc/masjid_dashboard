@@ -29,13 +29,15 @@ public class UserProfile {
     private String email;
 
     @Column(length = 1024)
-    private String password;
+    private String userPassword;
 
     @Column(length = 128)
     private String firstName;
 
     @Column(length = 128)
     private String lastName;
+
+    private String phoneNumber;
 
     private String emailVerifyCode;
 
